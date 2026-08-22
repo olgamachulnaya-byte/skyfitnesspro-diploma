@@ -1,3 +1,6 @@
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+
 import type { Metadata } from "next";
 
 import { AuthProvider } from "@/context/AuthContext";

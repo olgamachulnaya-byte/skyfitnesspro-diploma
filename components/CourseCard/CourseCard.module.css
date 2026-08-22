@@ -1,49 +1,122 @@
 .card {
-  min-height: 320px;
+  position: relative;
+
+  width: 360px;
+  height: 501px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
   border-radius: 30px;
+
   background: #ffffff;
-  box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+
+  box-shadow: 0 4px 67px -12px rgb(0 0 0 / 13%);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 360px;
+  height: 325px;
+  flex: 0 0 325px;
   overflow: hidden;
 }
 
-.content {
+.image {
+  width: 100%;
   height: 100%;
-  padding: 30px;
+  object-fit: cover;
+}
+
+.addIcon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  width: 32px;
+  height: 32px;
+}
+
+.addIcon img {
+  width: 100%;
+  height: 100%;
+}
+
+.content {
+  width: 300px;
+  margin: 24px auto 0;
+
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 .title {
-  margin: 0 0 18px;
-  font-size: 28px;
+  width: 300px;
+  margin: 0;
+
+  font-size: 32px;
   line-height: 1.1;
+  font-weight: 500;
 }
 
-.description {
-  margin: 0 0 24px;
-  line-height: 1.5;
-  flex-grow: 1;
-}
-
-.info {
+.tags {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
-.info span {
-  padding: 8px 12px;
-  border-radius: 20px;
-  background: #f1f1f1;
-  font-size: 14px;
+.tagRow {
+  display: flex;
+  gap: 6px;
 }
 
-.link {
-  align-self: flex-start;
-  padding: 12px 24px;
-  border-radius: 46px;
-  background: #bcec30;
-  color: #000000;
-  font-weight: 600;
+.tag {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px;
+  border-radius: 50px;
+
+  background: #f7f7f7;
+  color: #202020;
+
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 400;
+
+  white-space: nowrap;
+}
+
+.tag img {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 343px;
+    height: 492px;
+  }
+
+  .imageWrapper {
+    width: 343px;
+    height: 325px;
+    flex-basis: 325px;
+  }
+
+  .content {
+    margin-top: 24px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 1.1;
+  }
 }
