@@ -1,8 +1,13 @@
+import { CourseCatalog } from "@/components/CourseCatalog/CourseCatalog";
+import { Header } from "@/components/Header/Header";
+import { ScrollToTop } from "@/components/ScrollToTop/ScrollToTop";
+
 export default function HomePage() {
   return (
     <main>
-      <h1>SkyFitnessPro</h1>
-      <p>Онлайн-тренировки для каждого</p>
+      <Header />
+      <CourseCatalog />
+      <ScrollToTop />
     </main>
   );
 }

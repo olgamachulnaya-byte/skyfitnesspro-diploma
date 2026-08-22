@@ -1,0 +1,49 @@
+.card {
+  min-height: 320px;
+  border-radius: 30px;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 8%);
+  overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 0 18px;
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.description {
+  margin: 0 0 24px;
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+.info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.info span {
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #f1f1f1;
+  font-size: 14px;
+}
+
+.link {
+  align-self: flex-start;
+  padding: 12px 24px;
+  border-radius: 46px;
+  background: #bcec30;
+  color: #000000;
+  font-weight: 600;
+}
