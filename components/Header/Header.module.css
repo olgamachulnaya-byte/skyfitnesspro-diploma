@@ -1,0 +1,53 @@
+.header {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.profileLink {
+  font-size: 16px;
+}
+
+.button {
+  border: 0;
+  border-radius: 46px;
+  padding: 10px 24px;
+  background: #140d40;
+  color: #ffffff;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 18px 16px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .profileLink {
+    display: none;
+  }
+
+  .button {
+    padding: 9px 18px;
+  }
+}
