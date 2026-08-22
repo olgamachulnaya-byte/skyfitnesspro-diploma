@@ -30,9 +30,10 @@ export function CourseCatalog() {
         const coursesData = await getCourses();
 
         setCourses(
-          [...coursesData].sort((firstCourse, secondCourse) => {
-            return firstCourse.order - secondCourse.order;
-          }),
+          [...coursesData].sort(
+            (firstCourse, secondCourse) =>
+              firstCourse.order - secondCourse.order,
+          ),
         );
       } catch (error) {
         setErrorMessage(getErrorMessage(error));
@@ -49,18 +50,32 @@ export function CourseCatalog() {
   }
 
   if (errorMessage) {
-    return (
-      <p className={styles.error}>
-        {errorMessage}
-      </p>
-    );
+    return <p className={styles.error}>{errorMessage}</p>;
   }
 
   return (
     <section className={styles.section}>
-      <h1 className={styles.title}>
-        Начните заниматься спортом и улучшите качество жизни
-      </h1>
+      <div className={styles.hero}>
+        <h1 className={styles.title}>
+          Начните заниматься спортом
+          <br />
+          и улучшите качество жизни
+        </h1>
+
+        <div className={styles.callout}>
+          <span>
+            Измени своё
+            <br />
+            тело за полгода!
+          </span>
+
+          <img
+            src="/figma/icons/bubble-tail.svg"
+            alt=""
+            className={styles.calloutTail}
+          />
+        </div>
+      </div>
 
       <div className={styles.grid}>
         {courses.map((course) => (

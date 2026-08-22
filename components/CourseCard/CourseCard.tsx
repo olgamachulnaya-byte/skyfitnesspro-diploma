@@ -4,36 +4,64 @@ import type { Course } from "@/types/course";
 
 import styles from "./CourseCard.module.css";
 
+const courseImages: Record<string, string> = {
+  Йога: "/figma/courses/yoga.png",
+  Стретчинг: "/figma/courses/stretching.png",
+  Фитнес: "/figma/courses/fitness.png",
+  "Степ-аэробика": "/figma/courses/step-aerobics.png",
+  Бодифлекс: "/figma/courses/bodyflex.png",
+};
+
 type CourseCardProps = {
   course: Course;
 };
 
 export function CourseCard({ course }: CourseCardProps) {
+  const imageSrc = courseImages[course.nameRU];
+
   return (
-    <article className={styles.card}>
+    <Link
+      href={`/course/${course._id}`}
+      className={styles.card}
+      aria-label={`Открыть курс ${course.nameRU}`}
+    >
+      <div className={styles.imageWrapper}>
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt={course.nameRU}
+            className={styles.image}
+          />
+        )}
+
+        <span className={styles.addIcon} aria-hidden="true">
+          <img src="/figma/icons/add.svg" alt="" />
+        </span>
+      </div>
+
       <div className={styles.content}>
         <h2 className={styles.title}>{course.nameRU}</h2>
 
-        <p className={styles.description}>{course.description}</p>
+        <div className={styles.tags}>
+          <div className={styles.tagRow}>
+            <span className={styles.tag}>
+              <img src="/figma/icons/calendar.svg" alt="" />
+              {course.durationInDays} дней
+            </span>
 
-        <div className={styles.info}>
-          <span>{course.durationInDays} дней</span>
+            <span className={styles.tag}>
+              <img src="/figma/icons/time.svg" alt="" />
+              {course.dailyDurationInMinutes.from}–
+              {course.dailyDurationInMinutes.to} мин/день
+            </span>
+          </div>
 
-          <span>
-            {course.dailyDurationInMinutes.from}–
-            {course.dailyDurationInMinutes.to} мин/день
+          <span className={styles.tag}>
+            <img src="/figma/icons/difficulty.svg" alt="" />
+            {course.difficulty}
           </span>
-
-          <span>{course.difficulty}</span>
         </div>
-
-        <Link
-          href={`/course/${course._id}`}
-          className={styles.link}
-        >
-          Подробнее
-        </Link>
       </div>
-    </article>
+    </Link>
   );
 }

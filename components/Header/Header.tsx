@@ -18,28 +18,36 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo}>
-        SkyFitnessPro
-      </Link>
+      <div className={styles.inner}>
+        <Link href="/" className={styles.brand}>
+          <img
+            src="/figma/logo.png"
+            alt="SkyFitnessPro"
+            className={styles.logo}
+          />
 
-      <div className={styles.actions}>
+          <span className={styles.subtitle}>
+            Онлайн-тренировки для занятий дома
+          </span>
+        </Link>
+
         {!isLoading &&
           (isAuthenticated && user ? (
-            <>
+            <div className={styles.user}>
               <Link href="/profile" className={styles.profileLink}>
                 {user.email}
               </Link>
 
               <button
                 type="button"
-                className={styles.button}
+                className={styles.authButton}
                 onClick={handleLogout}
               >
                 Выйти
               </button>
-            </>
+            </div>
           ) : (
-            <Link href="/login" className={styles.button}>
+            <Link href="/login" className={styles.authButton}>
               Войти
             </Link>
           ))}
