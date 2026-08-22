@@ -2,11 +2,23 @@ import type { ApiMessage } from "@/types/api";
 import type { User } from "@/types/user";
 import { apiRequest } from "./request";
 
-export function getCurrentUser(token: string): Promise<User> {
-  return apiRequest<User>("/users/me", {
+type CurrentUserResponse = {
+  user: {
+    email: string;
+    selectedCourses?: string[];
+  };
+};
+
+export async function getCurrentUser(token: string): Promise<User> {
+  const response = await apiRequest<CurrentUserResponse>("/users/me", {
     method: "GET",
     token,
   });
+
+  return {
+    email: response.user.email,
+    selectedCourses: response.user.selectedCourses ?? [],
+  };
 }
 
 export function addCourseToUser(

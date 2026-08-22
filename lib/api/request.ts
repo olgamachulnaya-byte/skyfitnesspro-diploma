@@ -37,7 +37,7 @@ export async function apiRequest<T>(
   const requestHeaders = new Headers(headers);
 
   if (body !== undefined) {
-    requestHeaders.set("Content-Type", "application/json");
+    requestHeaders.set("Content-Type", "text/plain;charset=UTF-8");
   }
 
   if (token) {
