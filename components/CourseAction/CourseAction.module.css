@@ -1,0 +1,37 @@
+.wrapper {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  min-height: 52px;
+
+  padding: 16px 26px;
+
+  border: 0;
+  border-radius: 46px;
+
+  background: #bcec30;
+  color: #000000;
+
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.button:hover:not(:disabled) {
+  background: #99d100;
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.error {
+  margin: 10px 0 0;
+
+  color: #b00020;
+
+  font-size: 14px;
+  line-height: 1.2;
+}
