@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import type { Course } from "@/types/course";
@@ -27,15 +28,22 @@ export function CourseCard({ course }: CourseCardProps) {
     >
       <div className={styles.imageWrapper}>
         {imageSrc && (
-          <img
+          <Image
             src={imageSrc}
             alt={course.nameRU}
+            width={360}
+            height={325}
             className={styles.image}
           />
         )}
 
         <span className={styles.addIcon} aria-hidden="true">
-          <img src="/figma/icons/add.svg" alt="" />
+          <Image
+            src="/figma/icons/add.svg"
+            alt=""
+            width={32}
+            height={32}
+          />
         </span>
       </div>
 
@@ -45,19 +53,34 @@ export function CourseCard({ course }: CourseCardProps) {
         <div className={styles.tags}>
           <div className={styles.tagRow}>
             <span className={styles.tag}>
-              <img src="/figma/icons/calendar.svg" alt="" />
+              <Image
+                src="/figma/icons/calendar.svg"
+                alt=""
+                width={18}
+                height={18}
+              />
               {course.durationInDays} дней
             </span>
 
             <span className={styles.tag}>
-              <img src="/figma/icons/time.svg" alt="" />
+              <Image
+                src="/figma/icons/time.svg"
+                alt=""
+                width={18}
+                height={18}
+              />
               {course.dailyDurationInMinutes.from}–
               {course.dailyDurationInMinutes.to} мин/день
             </span>
           </div>
 
           <span className={styles.tag}>
-            <img src="/figma/icons/difficulty.svg" alt="" />
+            <Image
+              src="/figma/icons/difficulty.svg"
+              alt=""
+              width={18}
+              height={18}
+            />
             {course.difficulty}
           </span>
         </div>

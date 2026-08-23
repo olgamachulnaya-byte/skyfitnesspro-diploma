@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { getCourses } from "@/lib/api/courses";
@@ -69,11 +70,13 @@ export function CourseCatalog() {
             тело за полгода!
           </span>
 
-          <img
-            src="/figma/icons/bubble-tail.svg"
-            alt=""
-            className={styles.calloutTail}
-          />
+          <Image
+  src="/figma/icons/bubble-tail.svg"
+  alt=""
+  width={31}
+  height={36}
+  className={styles.calloutTail}
+           />
         </div>
       </div>
 

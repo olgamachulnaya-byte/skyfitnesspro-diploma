@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
@@ -20,10 +21,13 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.brand}>
-          <img
+          <Image
             src="/figma/logo.png"
             alt="SkyFitnessPro"
+            width={220}
+            height={35}
             className={styles.logo}
+            priority
           />
 
           <span className={styles.subtitle}>
