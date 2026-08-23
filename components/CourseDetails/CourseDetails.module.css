@@ -471,8 +471,7 @@
 
   width: 343px;
   height: 412px;
-
-  margin-top: 265px;
+  margin-top: 156px;
 
   overflow: visible;
 
@@ -480,21 +479,17 @@
   background: transparent;
 }
 
- .ctaDecorationDesktop {
+.ctaDecorationDesktop {
   display: none;
 }
 
 .ctaDecorationMobile {
   position: absolute;
-  z-index: 1;
+  z-index: 0;
 
   display: block;
 
-  left: -70px;
-  top: -265px;
-
-  width: 482px;
-  height: 456px;
+  inset: 0;
 
   overflow: visible;
 
@@ -504,45 +499,54 @@
 .ctaLineGreen {
   position: absolute;
 
-  left: 0;
-  top: 105px;
+  left: -70px;
+  top: -148px;
 
-  width: 375px;
-  height: 290px;
+  width: 431.03px;
+  height: 251.47px;
 
   max-width: none;
+
+  transform: rotate(-12.38deg);
+  object-fit: contain;
 }
 
 .ctaLineBlack {
   position: absolute;
 
-  left: 205px;
-  top: 55px;
+  left: 157px;
+  top: -179px;
 
-  width: 37px;
-  height: 32px;
+  width: 32.16px;
+  height: 27.33px;
 
   max-width: none;
+
+  object-fit: contain;
 }
 
 .ctaAthlete {
   position: absolute;
-  z-index: 2;
+  z-index: 1;
 
-  top: -190px;
-  right: -12px;
-  left: auto;
+  top: -265px;
+  left: 81.42px;
+  right: auto;
 
   display: block;
 
-  width: 285px;
-  height: auto;
+  width: 313.22px;
+  height: 348.91px;
   max-width: none;
 
-  transform: none;
+  object-fit: contain;
+
+  transform: rotate(-2.99deg);
+  transform-origin: center;
 
   pointer-events: none;
 }
+
 
 .ctaContent {
   position: relative;
@@ -572,6 +576,7 @@
 
   font-size: 18px;
   line-height: 1.1;
+  font-weight: 400;
 
   color: rgb(0 0 0 / 60%);
 }
@@ -593,21 +598,7 @@
 .benefits li {
   margin-bottom: 7px;
 }
-
- .button {
-    width: 100%;
-    height: 52px;
-    min-height: 52px;
-
-    padding: 0 16px;
-
-    border-radius: 46px;
-
-    font-size: 16px;
-    line-height: 1.1;
-    font-weight: 400;
-
-    white-space: nowrap;
-  }
-
+.benefits li:last-child {
+  margin-bottom: 0;
+}
 }
