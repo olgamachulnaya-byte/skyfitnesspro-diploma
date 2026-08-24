@@ -180,6 +180,7 @@
 
   width: 100%;
   height: 486px;
+  margin-top: 40px;
 
   overflow: visible;
 
@@ -220,6 +221,7 @@
 
   object-fit: contain;
 }
+
 .ctaLineBlackDesktop {
   position: absolute;
   z-index: 2;
@@ -235,6 +237,7 @@
 
   pointer-events: none;
 }
+
 .ctaDecorationMobile {
   display: none;
 }
@@ -243,8 +246,8 @@
   position: absolute;
   z-index: 3;
 
-  top: -86px;
-  left: 625px;
+  top: -102px;
+  left: 615px;
 
   display: block;
 
@@ -527,35 +530,31 @@
   pointer-events: none;
 }
 
-.ctaLineGreenMobile {
+.ctaDecorationDesktop {
   position: absolute;
   z-index: 1;
 
-  left: -70px;
-  top: -148px;
+  left: 0;
+  top: 0;
 
-  width: 431.03px;
-  height: 251.47px;
-  max-width: none;
+  display: block;
 
-  transform: rotate(-1.38deg);
-  transform-origin: center;
+  width: 1160px;
+  height: 545px;
 
-  object-fit: fill;
+  overflow: visible;
+
+  pointer-events: none;
 }
 
-.ctaLineBlackMobile {
-  position: absolute;
-  z-index: 2;
+.ctaDecorationImageDesktop {
+  display: block;
 
-  left: 162.5px;
-  top: -220px;
-
-  width: 32.16px;
-  height: 27.33px;
+  width: 1160px;
+  height: 545px;
   max-width: none;
 
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .ctaAthleteDesktop {
