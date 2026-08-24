@@ -180,6 +180,7 @@
 
   width: 100%;
   height: 486px;
+  margin-top: 40px;
 
   overflow: visible;
 
@@ -193,9 +194,13 @@
 
 .ctaDecorationDesktop {
   position: absolute;
-  z-index: 0;
 
   inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
 
   overflow: hidden;
   border-radius: 30px;
@@ -203,34 +208,74 @@
   pointer-events: none;
 }
 
-.ctaDecorationDesktop img {
+.ctaLineGreenDesktop {
+  position: absolute;
+  z-index: 1;
+
+  left: 500px;
+  top: 115px;
+
+  width: 629px;
+  height: 420px;
+  max-width: none;
+
   display: block;
 
-  width: 1160px;
-  height: 545px;
+  object-fit: contain;
 
+  transform: none;
+
+  pointer-events: none;
+}
+
+.ctaLineBlackDesktop {
+  position: absolute;
+  z-index: 4;
+
+  left: 700px;
+  top: 18px;
+
+  width: 50px;
+  height: 42.5px;
   max-width: none;
+
+  display: block;
+
+  object-fit: contain;
+
+  transform: none;
+
+  pointer-events: none;
 }
 
 .ctaDecorationMobile {
   display: none;
 }
 
-.ctaAthlete {
+.ctaAthleteDesktop {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
 
-  top: -82px;
-  left: 610px;
+  top: -102px;
+  left: 615px;
 
-  width: 520px;
-  height: auto;
+  display: block;
 
-  transform: rotate(-2.99deg);
+  width: 487px;
+  height: 542.49px;
+  max-width: none;
+
+  object-fit: contain;
+
+  transform: none;
 
   pointer-events: none;
+  
 }
 
+.ctaAthleteMobile {
+  display: none;
+}
 .ctaContent {
   position: relative;
   z-index: 2;
@@ -496,40 +541,38 @@
   pointer-events: none;
 }
 
-.ctaLineGreen {
+.ctaDecorationDesktop {
   position: absolute;
   z-index: 1;
 
-  left: -70px;
-  top: -148px;
+  left: 0;
+  top: 0;
 
-  width: 431.03px;
-  height: 251.47px;
+  display: block;
+
+  width: 1160px;
+  height: 545px;
+
+  overflow: visible;
+
+  pointer-events: none;
+}
+
+.ctaDecorationImageDesktop {
+  display: block;
+
+  width: 1160px;
+  height: 545px;
   max-width: none;
-
-  transform: rotate(-1.38deg);
-  transform-origin: center;
 
   object-fit: fill;
 }
 
-.ctaLineBlack {
-  position: absolute;
-  z-index: 2;
-
-  left: 162.5px;
-  top: -220px;
-
-  display: block;
-
-  width: 32.16px;
-  height: 27.33px;
-  max-width: none;
-
-  object-fit: contain;
+.ctaAthleteDesktop {
+  display: none;
 }
 
-.ctaAthlete {
+.ctaAthleteMobile {
   position: absolute;
   z-index: 3;
 
