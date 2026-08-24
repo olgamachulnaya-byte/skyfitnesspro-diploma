@@ -1,0 +1,180 @@
+.page {
+  min-height: 100vh;
+  padding: 48px 16px;
+  background: #f3f3f3;
+}
+
+.course {
+  position: relative;
+  width: min(100%, 1160px);
+  min-height: 820px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #fff;
+}
+
+.title {
+  margin: 0;
+  padding: 48px;
+  font-size: clamp(54px, 8vw, 110px);
+}
+
+.directions {
+  width: 520px;
+  margin-left: 48px;
+  padding: 32px 40px;
+  border-radius: 30px;
+  background: #bcec30;
+}
+
+.directions h2 {
+  margin: 0 0 24px;
+  font-size: 26px;
+}
+
+.directions ul,
+.cta ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.directions li {
+  margin: 16px 0;
+  font-size: 22px;
+}
+
+.directions li::before {
+  margin-right: 14px;
+  content: "✦";
+}
+
+.motivation {
+  position: absolute;
+  right: 55px;
+  bottom: 80px;
+  width: 510px;
+  height: 300px;
+  border: 9px solid #c6ff00;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.athlete {
+  position: absolute;
+  z-index: 2;
+  right: 120px;
+  bottom: 170px;
+  width: 313px;
+  height: 349px;
+  object-fit: fill;
+  transform: rotate(2.99deg);
+  transform-origin: center bottom;
+}
+
+.cta {
+  position: absolute;
+  z-index: 3;
+  right: 48px;
+  bottom: 36px;
+  width: 480px;
+  padding: 40px;
+  border-radius: 30px;
+  background: #fff;
+  box-shadow: 0 4px 24px rgb(0 0 0 / 8%);
+}
+
+.cta h2 {
+  margin: 0 0 16px;
+  font-size: 40px;
+  line-height: 1.04;
+  text-transform: uppercase;
+}
+
+.cta li {
+  margin: 6px 0;
+  color: #555;
+}
+
+.cta li::before {
+  content: "• ";
+}
+
+.cta button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 16px;
+  border: 0;
+  border-radius: 24px;
+  background: #c6ff00;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 0;
+    background: #fff;
+  }
+
+  .course {
+    min-height: 900px;
+    border-radius: 0;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .directions {
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    margin: 0 12px;
+    padding: 18px 20px 14px;
+    border-radius: 0 0 22px 22px;
+  }
+
+  .directions h2 {
+    margin-bottom: 12px;
+    font-size: 16px;
+  }
+
+  .directions li {
+    margin: 12px 0;
+    font-size: 13px;
+  }
+
+  .directions li::before {
+    margin-right: 8px;
+  }
+
+  .motivation {
+    right: -74px;
+    bottom: 272px;
+    width: 390px;
+    height: 215px;
+    border-width: 6px;
+  }
+
+  .athlete {
+    right: -3px;
+    bottom: 314px;
+    width: 313px;
+    height: 349px;
+  }
+
+  .cta {
+    right: 12px;
+    bottom: 35px;
+    box-sizing: border-box;
+    width: calc(100% - 24px);
+    min-height: 330px;
+    padding: 30px;
+    border-radius: 24px;
+  }
+
+  .cta h2 {
+    font-size: 25px;
+  }
+}
