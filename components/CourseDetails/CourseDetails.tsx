@@ -167,12 +167,13 @@ export function CourseDetails({ course }: CourseDetailsProps) {
   </div>
 
   <Image
-    src="/figma/course/cta-athlete.png"
-    alt=""
-    width={487}
-    height={542}
-    className={styles.ctaAthlete}
-  />
+  src="/figma/course/cta-athlete.svg"
+  alt=""
+  width={260}
+  height={346}
+  className={styles.ctaAthlete}
+  unoptimized
+/>
 
   <div className={styles.ctaContent}>
     <h2 className={styles.ctaTitle}>
