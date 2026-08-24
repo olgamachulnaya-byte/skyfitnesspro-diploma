@@ -1,0 +1,166 @@
+.backdrop {
+  position: fixed;
+  z-index: 1100;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgb(0 0 0 / 20%);
+}
+
+.modal {
+  width: 506px;
+  max-width: 100%;
+  max-height: calc(100vh - 48px);
+  box-sizing: border-box;
+
+  padding: 40px;
+
+  overflow-y: auto;
+
+  border-radius: 30px;
+
+  background: #ffffff;
+
+  box-shadow: 0 4px 67px -12px rgb(0 0 0 / 13%);
+}
+
+.title {
+  margin: 0 0 48px;
+
+  color: #000000;
+
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  color: #000000;
+
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+.input {
+  width: 100%;
+  height: 52px;
+  box-sizing: border-box;
+
+  padding: 16px 18px;
+
+  border: 1px solid #d0cece;
+  border-radius: 8px;
+
+  background: #ffffff;
+  color: #000000;
+
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 400;
+
+  outline: none;
+}
+
+.input:focus {
+  border-color: #000000;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  margin: 0;
+
+  appearance: none;
+}
+
+.saveButton {
+  width: 100%;
+  height: 52px;
+
+  margin-top: 34px;
+
+  border: 1px solid #bcec30;
+  border-radius: 46px;
+
+  background: #bcec30;
+  color: #000000;
+
+  font-size: 18px;
+  line-height: 1.1;
+  font-weight: 400;
+
+  cursor: pointer;
+}
+
+.saveButton:hover:not(:disabled) {
+  background: #c6ff00;
+}
+
+.saveButton:active:not(:disabled) {
+  border-color: #000000;
+
+  background: #000000;
+  color: #ffffff;
+}
+
+.saveButton:disabled {
+  background: #f7f7f7;
+  border-color: #f7f7f7;
+  color: #999999;
+
+  cursor: default;
+}
+
+.error {
+  margin: 20px 0 0;
+
+  color: #b00020;
+
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+@media (max-width: 600px) {
+  .backdrop {
+    padding: 16px;
+  }
+
+  .modal {
+    width: 343px;
+    max-height: calc(100vh - 32px);
+
+    padding: 30px;
+  }
+
+  .title {
+    margin-bottom: 30px;
+
+    font-size: 24px;
+  }
+
+  .label {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+  }
+}
