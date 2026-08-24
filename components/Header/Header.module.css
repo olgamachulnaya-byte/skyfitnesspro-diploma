@@ -60,14 +60,48 @@
 .user {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
+
+  color: #000000;
+  text-decoration: none;
 }
 
-.profileLink {
-  max-width: 250px;
+.userAvatar {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 32px;
+
+  border-radius: 50%;
+
+  background: #d9d9d9;
+  color: #ffffff;
+
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.userName {
+  max-width: 170px;
+
   overflow: hidden;
+
+  font-size: 16px;
+  line-height: 1.1;
+  font-weight: 400;
+
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.chevron {
+  font-size: 16px;
+  line-height: 1;
 }
 
 @media (max-width: 767px) {
@@ -96,7 +130,7 @@
     font-size: 16px;
   }
 
-  .profileLink {
-    display: none;
-  }
+  .userName {
+  display: none;
+}
 }
