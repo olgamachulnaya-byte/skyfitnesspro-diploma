@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 
 import { useAuth } from "@/hooks/useAuth";
+
+import styles from "./page.module.css";
 
 type AuthMode = "login" | "register";
 
@@ -11,12 +15,15 @@ function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function validateRegistrationPassword(password: string): string | null {
+function validateRegistrationPassword(
+  password: string,
+): string | null {
   if (password.length < 6) {
     return "Пароль должен содержать не менее 6 символов";
   }
 
-  const specialCharacters = password.match(/[^A-Za-z0-9]/g) ?? [];
+  const specialCharacters =
+    password.match(/[^A-Za-z0-9]/g) ?? [];
 
   if (specialCharacters.length < 2) {
     return "Пароль должен содержать не менее 2 спецсимволов";
@@ -41,14 +48,24 @@ export default function LoginPage() {
   const router = useRouter();
   const { login, register } = useAuth();
 
-  const [mode, setMode] = useState<AuthMode>("login");
+  const [mode, setMode] =
+    useState<AuthMode>("login");
+
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] =
+    useState("");
+  const [repeatPassword, setRepeatPassword] =
+    useState("");
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] =
+    useState("");
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [isSubmitting, setIsSubmitting] =
+    useState(false);
+
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ) {
     event.preventDefault();
 
     setErrorMessage("");
@@ -56,7 +73,9 @@ export default function LoginPage() {
     const normalizedEmail = email.trim();
 
     if (!validateEmail(normalizedEmail)) {
-      setErrorMessage("Введите корректный Email");
+      setErrorMessage(
+        "Введите корректный Email",
+      );
       return;
     }
 
@@ -65,8 +84,19 @@ export default function LoginPage() {
       return;
     }
 
+    if (
+      mode === "register" &&
+      password !== repeatPassword
+    ) {
+      setErrorMessage("Пароли не совпадают");
+      return;
+    }
+
     if (mode === "register") {
-      const passwordError = validateRegistrationPassword(password);
+      const passwordError =
+        validateRegistrationPassword(
+          password,
+        );
 
       if (passwordError) {
         setErrorMessage(passwordError);
@@ -90,7 +120,9 @@ export default function LoginPage() {
 
       router.push("/profile");
     } catch (error) {
-      setErrorMessage(getErrorMessage(error));
+      setErrorMessage(
+        getErrorMessage(error),
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -98,63 +130,120 @@ export default function LoginPage() {
 
   function changeMode() {
     setMode((currentMode) =>
-      currentMode === "login" ? "register" : "login",
+      currentMode === "login"
+        ? "register"
+        : "login",
     );
 
+    setPassword("");
+    setRepeatPassword("");
     setErrorMessage("");
   }
 
   return (
-    <main>
-      <h1>{mode === "login" ? "Вход" : "Регистрация"}</h1>
-
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">Email</label>
-
-          <input
-            id="email"
-            name="email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            autoComplete="email"
-            placeholder="Email"
+    <main className={styles.page}>
+      <section className={styles.card}>
+        <Link
+          href="/"
+          className={styles.logoLink}
+        >
+          <Image
+            src="/figma/logo.png"
+            alt="SkyFitnessPro"
+            width={220}
+            height={35}
+            className={styles.logo}
+            priority
           />
-        </div>
+        </Link>
 
-        <div>
-          <label htmlFor="password">Пароль</label>
+        <form
+          className={styles.form}
+          onSubmit={handleSubmit}
+        >
+          <div className={styles.inputs}>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              className={styles.input}
+              value={email}
+              onChange={(event) =>
+                setEmail(event.target.value)
+              }
+              autoComplete="email"
+              placeholder="Эл. почта"
+            />
 
-          <input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            autoComplete={
-              mode === "login" ? "current-password" : "new-password"
-            }
-            placeholder="Пароль"
-          />
-        </div>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              className={styles.input}
+              value={password}
+              onChange={(event) =>
+                setPassword(
+                  event.target.value,
+                )
+              }
+              autoComplete={
+                mode === "login"
+                  ? "current-password"
+                  : "new-password"
+              }
+              placeholder="Пароль"
+            />
 
-        {errorMessage && <p>{errorMessage}</p>}
+            {mode === "register" && (
+              <input
+                id="repeatPassword"
+                name="repeatPassword"
+                type="password"
+                className={styles.input}
+                value={repeatPassword}
+                onChange={(event) =>
+                  setRepeatPassword(
+                    event.target.value,
+                  )
+                }
+                autoComplete="new-password"
+                placeholder="Повторите пароль"
+              />
+            )}
+          </div>
 
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting
-            ? "Загрузка..."
-            : mode === "login"
-              ? "Войти"
-              : "Зарегистрироваться"}
-        </button>
-      </form>
+          {errorMessage && (
+            <p className={styles.error}>
+              {errorMessage}
+            </p>
+          )}
 
-      <button type="button" onClick={changeMode} disabled={isSubmitting}>
-        {mode === "login"
-          ? "Зарегистрироваться"
-          : "Уже есть аккаунт? Войти"}
-      </button>
+          <div className={styles.buttons}>
+            <button
+              type="submit"
+              className={styles.primaryButton}
+              disabled={isSubmitting}
+            >
+              {isSubmitting
+                ? "Загрузка..."
+                : mode === "login"
+                  ? "Войти"
+                  : "Зарегистрироваться"}
+            </button>
+
+            <button
+              type="button"
+              className={styles.secondaryButton}
+              onClick={changeMode}
+              disabled={isSubmitting}
+            >
+              {mode === "login"
+                ? "Зарегистрироваться"
+                : "Войти"}
+            </button>
+          </div>
+        </form>
+      </section>
     </main>
   );
 }
