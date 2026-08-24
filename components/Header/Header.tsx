@@ -2,20 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 import { useAuth } from "@/hooks/useAuth";
 
 import styles from "./Header.module.css";
 
 export function Header() {
-  const router = useRouter();
-  const { user, isLoading, isAuthenticated, logout } = useAuth();
+  const { user, isLoading, isAuthenticated } = useAuth();
 
-  function handleLogout() {
-    logout();
-    router.push("/");
-  }
 
   return (
     <header className={styles.header}>
@@ -35,26 +29,26 @@ export function Header() {
           </span>
         </Link>
 
-        {!isLoading &&
-          (isAuthenticated && user ? (
-            <div className={styles.user}>
-              <Link href="/profile" className={styles.profileLink}>
-                {user.email}
-              </Link>
+         {!isLoading &&
+  (isAuthenticated && user ? (
+    <Link href="/profile" className={styles.user}>
+      <span className={styles.userAvatar}>
+        {user.email.charAt(0).toUpperCase()}
+      </span>
 
-              <button
-                type="button"
-                className={styles.authButton}
-                onClick={handleLogout}
-              >
-                Выйти
-              </button>
-            </div>
-          ) : (
-            <Link href="/login" className={styles.authButton}>
-              Войти
-            </Link>
-          ))}
+      <span className={styles.userName}>
+        {user.email.split("@")[0]}
+      </span>
+
+      <span className={styles.chevron} aria-hidden="true">
+        ˅
+      </span>
+    </Link>
+  ) : (
+    <Link href="/login" className={styles.authButton}>
+      Войти
+    </Link>
+  ))}
       </div>
     </header>
   );
