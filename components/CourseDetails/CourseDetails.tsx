@@ -138,11 +138,20 @@ export function CourseDetails({ course }: CourseDetailsProps) {
   aria-hidden="true"
 >
   <Image
-    src="/figma/course/cta-decoration.svg"
+    src="/figma/course/cta-line-green-desktop.svg"
     alt=""
     width={1160}
     height={545}
-    className={styles.ctaDecorationImageDesktop}
+    className={styles.ctaLineGreenDesktop}
+    unoptimized
+  />
+
+  <Image
+    src="/figma/course/cta-line-black-desktop.svg"
+    alt=""
+    width={1160}
+    height={545}
+    className={styles.ctaLineBlackDesktop}
     unoptimized
   />
 </div>

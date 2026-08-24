@@ -194,13 +194,16 @@
 
 .ctaDecorationDesktop {
   position: absolute;
-  z-index: 0;
 
   inset: 0;
 
   display: block;
 
-  overflow: visible;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  border-radius: 30px;
 
   pointer-events: none;
 }
@@ -210,30 +213,37 @@
   z-index: 1;
 
   left: 500px;
-  top: 145px;
+  top: 115px;
 
-  width: 650px;
-  height: auto;
+  width: 629px;
+  height: 420px;
   max-width: none;
 
-  transform: rotate(-1deg);
-  transform-origin: center;
+  display: block;
 
   object-fit: contain;
+
+  transform: none;
+
+  pointer-events: none;
 }
 
 .ctaLineBlackDesktop {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
 
-  left: 805px;
-  top: 92px;
+  left: 700px;
+  top: 18px;
 
   width: 50px;
   height: 42.5px;
   max-width: none;
 
+  display: block;
+
   object-fit: contain;
+
+  transform: none;
 
   pointer-events: none;
 }
@@ -260,6 +270,7 @@
   transform: none;
 
   pointer-events: none;
+  
 }
 
 .ctaAthleteMobile {
