@@ -134,44 +134,65 @@ export function CourseDetails({ course }: CourseDetailsProps) {
 
        <section className={styles.cta}>
   <div
-    className={styles.ctaDecorationDesktop}
-    aria-hidden="true"
-  >
-    <Image
-      src="/figma/course/cta-decoration.svg"
-      alt=""
-      width={1160}
-      height={545}
-    />
-  </div>
-
-  <div
-    className={styles.ctaDecorationMobile}
-    aria-hidden="true"
-  >
-    <Image
-      src="/figma/course/cta-line-green.svg"
-      alt=""
-      width={375}
-      height={290}
-      className={styles.ctaLineGreen}
-    />
-
-    <Image
-      src="/figma/course/cta-line-black.svg"
-      alt=""
-      width={37}
-      height={32}
-      className={styles.ctaLineBlack}
-    />
-  </div>
+  className={styles.ctaDecorationDesktop}
+  aria-hidden="true"
+>
+  <Image
+    src="/figma/course/cta-line-green.svg"
+    alt=""
+    width={431}
+    height={251}
+    className={styles.ctaLineGreenDesktop}
+    unoptimized
+  />
 
   <Image
+    src="/figma/course/cta-line-black.svg"
+    alt=""
+    width={50}
+    height={43}
+    className={styles.ctaLineBlackDesktop}
+    unoptimized
+  />
+</div>
+
+  <div
+  className={styles.ctaDecorationMobile}
+  aria-hidden="true"
+>
+  <Image
+    src="/figma/course/cta-line-green.svg"
+    alt=""
+    width={431}
+    height={251}
+    className={styles.ctaLineGreenMobile}
+    unoptimized
+  />
+
+  <Image
+    src="/figma/course/cta-line-black.svg"
+    alt=""
+    width={32}
+    height={27}
+    className={styles.ctaLineBlackMobile}
+    unoptimized
+  />
+</div>
+    <Image
+  src="/figma/course/cta-athlete-desktop.svg"
+  alt=""
+  width={487}
+  height={538}
+  className={styles.ctaAthleteDesktop}
+  unoptimized
+/>
+
+<Image
   src="/figma/course/cta-athlete.svg"
   alt=""
-  width={260}
-  height={346}
-  className={styles.ctaAthlete}
+  width={313}
+  height={349}
+  className={styles.ctaAthleteMobile}
   unoptimized
 />
 

@@ -197,40 +197,71 @@
 
   inset: 0;
 
-  overflow: hidden;
-  border-radius: 30px;
+  display: block;
+
+  overflow: visible;
 
   pointer-events: none;
 }
 
-.ctaDecorationDesktop img {
-  display: block;
+.ctaLineGreenDesktop {
+  position: absolute;
+  z-index: 1;
 
-  width: 1160px;
-  height: 545px;
+  left: 500px;
+  top: 145px;
 
+  width: 650px;
+  height: auto;
   max-width: none;
-}
 
+  transform: rotate(-1deg);
+  transform-origin: center;
+
+  object-fit: contain;
+}
+.ctaLineBlackDesktop {
+  position: absolute;
+  z-index: 2;
+
+  left: 805px;
+  top: 92px;
+
+  width: 50px;
+  height: 42.5px;
+  max-width: none;
+
+  object-fit: contain;
+
+  pointer-events: none;
+}
 .ctaDecorationMobile {
   display: none;
 }
 
-.ctaAthlete {
+.ctaAthleteDesktop {
   position: absolute;
-  z-index: 1;
+  z-index: 3;
 
-  top: -82px;
-  left: 610px;
+  top: -86px;
+  left: 625px;
 
-  width: 520px;
-  height: auto;
+  display: block;
 
-  transform: rotate(-2.99deg);
+  width: 487px;
+  height: 542.49px;
+  max-width: none;
+
+  object-fit: contain;
+
+  transform: none;
 
   pointer-events: none;
 }
 
+.ctaAthleteMobile {
+  display: none;
+}
 .ctaContent {
   position: relative;
   z-index: 2;
@@ -496,7 +527,7 @@
   pointer-events: none;
 }
 
-.ctaLineGreen {
+.ctaLineGreenMobile {
   position: absolute;
   z-index: 1;
 
@@ -513,14 +544,12 @@
   object-fit: fill;
 }
 
-.ctaLineBlack {
+.ctaLineBlackMobile {
   position: absolute;
   z-index: 2;
 
   left: 162.5px;
   top: -220px;
-
-  display: block;
 
   width: 32.16px;
   height: 27.33px;
@@ -529,7 +558,11 @@
   object-fit: contain;
 }
 
-.ctaAthlete {
+.ctaAthleteDesktop {
+  display: none;
+}
+
+.ctaAthleteMobile {
   position: absolute;
   z-index: 3;
 
