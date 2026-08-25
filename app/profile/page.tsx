@@ -283,11 +283,12 @@ async function handleResetAndStart(course: Course) {
 
           {selectedCourses.length > 0 ? (
             <div className={styles.coursesGrid}>
-              {selectedCourses.map((course) => (
+              {selectedCourses.map((course, index) => (
                 <ProfileCourseCard
                   key={course._id}
                   course={course}
                   progress={courseProgress[course._id] ?? 0}
+                  isPriority={index === 0}
                   isRemoving={
                     removingCourseId === course._id
                   }

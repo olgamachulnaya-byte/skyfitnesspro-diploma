@@ -5,11 +5,11 @@ import type { Course } from "@/types/course";
 import styles from "./ProfileCourseCard.module.css";
 
 const courseImages: Record<string, string> = {
-  Йога: "/figma/courses/yoga.png",
-  Стретчинг: "/figma/courses/stretching.png",
-  Фитнес: "/figma/courses/fitness.png",
-  "Степ-аэробика": "/figma/courses/step-aerobics.png",
-  Бодифлекс: "/figma/courses/bodyflex.png",
+  Йога: "/figma/courses/yoga-card.svg",
+  Стретчинг: "/figma/courses/stretching-card.svg",
+  Фитнес: "/figma/courses/fitness-card.svg",
+  "Степ-аэробика": "/figma/courses/step-aerobics-card.svg",
+  Бодифлекс: "/figma/courses/bodyflex-card.svg",
 };
 
 type ProfileCourseCardProps = {
@@ -17,6 +17,7 @@ type ProfileCourseCardProps = {
   progress: number;
   isRemoving: boolean;
   isResetting: boolean;
+  isPriority?: boolean;
   onStart: () => void;
   onRemove: () => void;
   onResetAndStart: () => void;
@@ -27,6 +28,7 @@ export function ProfileCourseCard({
   progress,
   isRemoving,
   isResetting,
+  isPriority = false,
   onStart,
   onRemove,
   onResetAndStart,
@@ -53,14 +55,16 @@ export function ProfileCourseCard({
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
         {imageSrc && (
-          <Image
-            src={imageSrc}
-            alt={course.nameRU}
-            width={360}
-            height={325}
-            className={styles.image}
-          />
-        )}
+      <Image
+       src={imageSrc}
+       alt={course.nameRU}
+       width={360}
+       height={325}
+       className={styles.image}
+       loading={isPriority ? "eager" : "lazy"}
+       unoptimized
+      />
+      )}
 
         <button
           type="button"

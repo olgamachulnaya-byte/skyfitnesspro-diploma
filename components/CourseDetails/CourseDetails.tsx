@@ -7,11 +7,11 @@ import { CourseAction } from "../CourseAction/CourseAction";
 import styles from "./CourseDetails.module.css";
 
 const courseHeroImages: Record<string, string> = {
-  Йога: "/figma/course/yoga-hero-figma.png",
-  Стретчинг: "/figma/courses/stretching.png",
-  Фитнес: "/figma/courses/fitness.png",
-  "Степ-аэробика": "/figma/courses/step-aerobics.png",
-  Бодифлекс: "/figma/courses/bodyflex.png",
+  Йога: "/figma/course/heroes/yoga-hero.svg",
+  Стретчинг: "/figma/course/heroes/stretching-hero.svg",
+  Фитнес: "/figma/course/heroes/fitness-hero.svg",
+  "Степ-аэробика": "/figma/course/heroes/step-aerobics-hero.svg",
+  Бодифлекс: "/figma/course/heroes/bodyflex-hero.svg",
 };
 
 const courseMobileHeroImages: Record<string, string> = {
@@ -67,27 +67,29 @@ export function CourseDetails({ course }: CourseDetailsProps) {
   return (
     <div className={styles.wrapper}>
       <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>{course.nameRU}</h1>
+  <h1 className={styles.heroTitle}>
+    {course.nameRU}
+  </h1>
 
-        <Image
-          src={heroImage}
-          alt=""
-          width={1023}
-          height={683}
-          className={styles.heroImageDesktop}
-          priority
-        />
+  <Image
+    src={heroImage}
+    alt=""
+    width={1160}
+    height={310}
+    className={styles.heroImageDesktop}
+    priority
+    unoptimized
+  />
 
-        <Image
-          src={mobileHeroImage}
-          alt={course.nameRU}
-          fill
-          sizes="(max-width: 600px) 343px, 1px"
-          className={styles.heroImageMobile}
-          priority
-        />
-      </section>
-
+  <Image
+    src={mobileHeroImage}
+    alt={course.nameRU}
+    fill
+    sizes="(max-width: 600px) 343px, 1px"
+    className={styles.heroImageMobile}
+    priority
+  />
+</section>
       <section className={styles.fittingSection}>
         <h2 className={styles.sectionTitle}>
           Подойдет для вас, если:
@@ -156,25 +158,17 @@ export function CourseDetails({ course }: CourseDetailsProps) {
   />
 </div>
 
+
   <div
-  className={styles.ctaDecorationMobile}
+  className={styles.ctaVisualMobile}
   aria-hidden="true"
 >
   <Image
-    src="/figma/course/cta-line-green.svg"
+    src="/figma/course/cta-mobile-visual.svg"
     alt=""
-    width={431}
-    height={251}
-    className={styles.ctaLineGreenMobile}
-    unoptimized
-  />
-
-  <Image
-    src="/figma/course/cta-line-black.svg"
-    alt=""
-    width={32}
-    height={27}
-    className={styles.ctaLineBlackMobile}
+    width={482}
+    height={456}
+    className={styles.ctaVisualMobileImage}
     unoptimized
   />
 </div>
@@ -184,15 +178,6 @@ export function CourseDetails({ course }: CourseDetailsProps) {
   width={487}
   height={538}
   className={styles.ctaAthleteDesktop}
-  unoptimized
-/>
-
-<Image
-  src="/figma/course/cta-athlete.svg"
-  alt=""
-  width={313}
-  height={349}
-  className={styles.ctaAthleteMobile}
   unoptimized
 />
 

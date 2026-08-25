@@ -12,11 +12,15 @@
 @media (max-width: 767px) {
   .page {
     min-height: 100vh;
+
     background: #ffffff;
   }
 
   .main {
-    width: 343px;
+    width: min(343px, calc(100% - 32px));
+
+    margin: 0 auto;
+
     padding-bottom: 29px;
   }
 }
