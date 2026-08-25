@@ -9,12 +9,9 @@ export function getCourses(): Promise<Course[]> {
 }
 
 export function getCourseById(courseId: string): Promise<Course> {
-  return apiRequest<Course>(
-    `/courses/${encodeURIComponent(courseId)}`,
-    {
-      method: "GET",
-    },
-  );
+  return apiRequest<Course>(`/courses/${encodeURIComponent(courseId)}`, {
+    method: "GET",
+  });
 }
 
 export function getCourseWorkouts(

@@ -41,7 +41,7 @@ https://skyfitnesspro-diploma.olga-machulnaya.workers.dev
 
 Клонировать репозиторий:
 
-```bash
+````bash
 git clone https://github.com/olgamachulnaya-byte/skyfitnesspro-diploma.git
 
 ```markdown
@@ -51,3 +51,4 @@ git clone https://github.com/olgamachulnaya-byte/skyfitnesspro-diploma.git
 
 ```bash
 npm test
+````

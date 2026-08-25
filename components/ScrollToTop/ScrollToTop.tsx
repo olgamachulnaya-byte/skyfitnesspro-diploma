@@ -11,11 +11,7 @@ export function ScrollToTop() {
   }
 
   return (
-    <button
-      type="button"
-      className={styles.button}
-      onClick={handleClick}
-    >
+    <button type="button" className={styles.button} onClick={handleClick}>
       Наверх ↑
     </button>
   );

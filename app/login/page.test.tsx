@@ -30,13 +30,9 @@ describe("LoginPage", () => {
   it("показывает форму входа", () => {
     render(<LoginPage />);
 
-    expect(
-      screen.getByPlaceholderText("Эл. почта"),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Эл. почта")).toBeInTheDocument();
 
-    expect(
-      screen.getByPlaceholderText("Пароль"),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Пароль")).toBeInTheDocument();
 
     expect(
       screen.getByRole("button", {
@@ -62,11 +58,7 @@ describe("LoginPage", () => {
       }),
     );
 
-    expect(
-      screen.getByPlaceholderText(
-        "Повторите пароль",
-      ),
-    ).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Повторите пароль")).toBeInTheDocument();
   });
 
   it("показывает ошибку для некорректного email", async () => {
@@ -74,15 +66,9 @@ describe("LoginPage", () => {
 
     render(<LoginPage />);
 
-    await user.type(
-      screen.getByPlaceholderText("Эл. почта"),
-      "wrong@email",
-       );
+    await user.type(screen.getByPlaceholderText("Эл. почта"), "wrong@email");
 
-    await user.type(
-      screen.getByPlaceholderText("Пароль"),
-      "Password!!",
-    );
+    await user.type(screen.getByPlaceholderText("Пароль"), "Password!!");
 
     await user.click(
       screen.getByRole("button", {
@@ -90,9 +76,7 @@ describe("LoginPage", () => {
       }),
     );
 
-    expect(
-      screen.getByText("Введите корректный Email"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Введите корректный Email")).toBeInTheDocument();
 
     expect(mockLogin).not.toHaveBeenCalled();
   });
@@ -113,15 +97,10 @@ describe("LoginPage", () => {
       "test@example.com",
     );
 
-    await user.type(
-      screen.getByPlaceholderText("Пароль"),
-      "Password!!",
-    );
+    await user.type(screen.getByPlaceholderText("Пароль"), "Password!!");
 
     await user.type(
-      screen.getByPlaceholderText(
-        "Повторите пароль",
-      ),
+      screen.getByPlaceholderText("Повторите пароль"),
       "Password!1",
     );
 
@@ -131,9 +110,7 @@ describe("LoginPage", () => {
       }),
     );
 
-    expect(
-      screen.getByText("Пароли не совпадают"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Пароли не совпадают")).toBeInTheDocument();
 
     expect(mockRegister).not.toHaveBeenCalled();
   });
@@ -150,10 +127,7 @@ describe("LoginPage", () => {
       "test@example.com",
     );
 
-    await user.type(
-      screen.getByPlaceholderText("Пароль"),
-      "Password!!",
-    );
+    await user.type(screen.getByPlaceholderText("Пароль"), "Password!!");
 
     await user.click(
       screen.getByRole("button", {
@@ -168,8 +142,6 @@ describe("LoginPage", () => {
       });
     });
 
-    expect(mockPush).toHaveBeenCalledWith(
-      "/profile",
-    );
+    expect(mockPush).toHaveBeenCalledWith("/profile");
   });
 });

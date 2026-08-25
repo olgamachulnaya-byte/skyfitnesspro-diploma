@@ -14,13 +14,10 @@ export function getCourseProgress(
     courseId,
   });
 
-  return apiRequest<CourseProgress>(
-    `/users/me/progress?${query.toString()}`,
-    {
-      method: "GET",
-      token,
-    },
-  );
+  return apiRequest<CourseProgress>(`/users/me/progress?${query.toString()}`, {
+    method: "GET",
+    token,
+  });
 }
 
 export function getWorkoutProgress(
@@ -33,13 +30,10 @@ export function getWorkoutProgress(
     workoutId,
   });
 
-  return apiRequest<WorkoutProgress>(
-    `/users/me/progress?${query.toString()}`,
-    {
-      method: "GET",
-      token,
-    },
-  );
+  return apiRequest<WorkoutProgress>(`/users/me/progress?${query.toString()}`, {
+    method: "GET",
+    token,
+  });
 }
 
 export function updateWorkoutProgress(
