@@ -114,27 +114,31 @@
 
   .title {
     width: 301px;
-
-    font-size: 24px;
   }
 }
 
-@media (max-width: 759px) {
+@media (max-width: 767px) {
   .card {
-    width: 343px;
-    height: 492px;
+    width: 100%;
+    max-width: 343px;
+    height: auto;
+
+    min-height: 470px;
   }
 
   .imageWrapper {
-    width: 343px;
-    height: 325px;
-    flex-basis: 325px;
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 343 / 325;
+
+    flex-basis: auto;
   }
 
   .content {
-    width: 301px;
+    width: calc(100% - 42px);
 
-    margin-top: 24px;
+    margin: 24px auto;
   }
 
   .title {
@@ -142,6 +146,14 @@
 
     font-size: 24px;
     line-height: 1.1;
+  }
+
+  .tagRow {
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 14px;
   }
 }
 

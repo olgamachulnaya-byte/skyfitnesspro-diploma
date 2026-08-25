@@ -27,8 +27,10 @@
 }
 
 .logo {
-  width: 220px;
-  height: 35px;
+  width: 223px;
+  height: auto;
+
+  max-width: 100%;
 
   object-fit: contain;
 }
@@ -231,12 +233,17 @@
 
   .inner {
     width: calc(100% - 32px);
+    align-items: center;
   }
 
-  .logo {
-    width: 220px;
-    height: 35px;
-  }
+  .brand {
+  min-width: 0;
+}
+
+.logo {
+  width: 160px;
+  height: auto;
+}
 
   .subtitle {
     display: none;
@@ -259,12 +266,5 @@
     width: 190px;
 
     top: calc(100% + 10px);
-  }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 180px;
-    height: auto;
   }
 }

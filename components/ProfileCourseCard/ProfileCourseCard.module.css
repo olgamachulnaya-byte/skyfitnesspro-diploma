@@ -200,7 +200,7 @@
   cursor: default;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .card {
     width: 343px;
   }
@@ -212,9 +212,35 @@
   .content {
     width: 303px;
   }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+    max-width: 343px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 343 / 325;
+
+    flex-basis: auto;
+  }
+
+  .content {
+    width: calc(100% - 40px);
+
+    margin: 24px auto 20px;
+  }
 
   .title {
     font-size: 24px;
+  }
+
+  .tagRow {
+    flex-wrap: wrap;
   }
 
   .tag {
