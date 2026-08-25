@@ -43,3 +43,11 @@ https://skyfitnesspro-diploma.olga-machulnaya.workers.dev
 
 ```bash
 git clone https://github.com/olgamachulnaya-byte/skyfitnesspro-diploma.git
+
+```markdown
+## Проверка проекта
+
+Запуск тестов:
+
+```bash
+npm test
