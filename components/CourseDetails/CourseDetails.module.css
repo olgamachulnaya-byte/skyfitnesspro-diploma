@@ -13,38 +13,40 @@
   position: relative;
 
   width: 100%;
-  height: 310px;
+  aspect-ratio: 1160 / 310;
 
   overflow: hidden;
 
   border-radius: 30px;
-
-  background: #ffc700;
 }
 
 .heroTitle {
   position: absolute;
-  z-index: 2;
-  top: 40px;
-  left: 40px;
 
-  margin: 0;
+  width: 1px;
+  height: 1px;
 
-  color: #ffffff;
+  margin: -1px;
+  padding: 0;
 
-  font-size: 60px;
-  line-height: 1.1;
-  font-weight: 500;
+  overflow: hidden;
+
+  clip: rect(0 0 0 0);
+
+  white-space: nowrap;
+
+  border: 0;
 }
 
 .heroImageDesktop {
   position: absolute;
 
-  top: -231px;
-  left: 368px;
+  inset: 0;
 
-  width: 1023px;
-  height: 683px;
+  width: 100%;
+  height: 100%;
+
+  display: block;
 
   object-fit: cover;
 
@@ -190,6 +192,19 @@
 
   box-shadow:
     0 4px 67px -12px rgb(0 0 0 / 13%);
+}
+
+.ctaVisualMobile {
+  display: none;
+}
+
+.ctaVisualMobileImage {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
 }
 
 .ctaDecorationDesktop {
@@ -367,10 +382,6 @@
   width: auto;
 }
 
-  .hero {
-    height: 260px;
-  }
-
   .heroTitle {
     top: 30px;
     left: 30px;
@@ -399,6 +410,97 @@
     opacity: 0.45;
   }
 }
+@media (min-width: 760px) and (max-width: 1199px) {
+  .cta {
+    position: relative;
+
+    width: 100%;
+    min-height: 360px;
+
+    margin-top: 70px;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    background: #ffffff;
+  }
+
+  .ctaDecorationDesktop,
+  .ctaAthleteDesktop {
+    display: none;
+  }
+
+  .ctaVisualMobile {
+    position: absolute;
+    z-index: 3;
+
+    top: -42px;
+    right: clamp(-90px, -6vw, -40px);
+    left: auto;
+
+    display: block;
+
+    width: clamp(350px, 48vw, 430px);
+    height: auto;
+
+    transform: none;
+
+    pointer-events: none;
+  }
+
+  .ctaVisualMobileImage {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .ctaContent {
+    position: relative;
+    z-index: 5;
+
+    width: min(310px, 44%);
+
+    margin: 0;
+    padding: 38px 0 38px 40px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    transform: none;
+  }
+
+  .ctaTitle {
+    width: 100%;
+
+    margin: 0;
+
+    font-size: 32px;
+    line-height: 1.05;
+    font-weight: 500;
+  }
+
+  .benefits {
+    width: 100%;
+
+    margin: 0;
+    padding-left: 20px;
+
+    font-size: 16px;
+    line-height: 1.2;
+
+    white-space: normal;
+  }
+
+  .ctaButton {
+    width: 100%;
+    max-width: 283px;
+  }
+}
 
 @media (max-width: 600px) {
   .wrapper {
@@ -413,7 +515,7 @@
   .hero {
   width: 100%;
   height: 325px;
-
+  aspect-ratio: auto;
   overflow: hidden;
 
   border-radius: 30px;
@@ -514,13 +616,16 @@
   .cta {
   position: relative;
 
-  width: 343px;
+  width: 100%;
+  max-width: 343px;
   height: 412px;
-  margin-top: 156px;
+
+  margin: 156px auto 0;
 
   overflow: visible;
 
   border-radius: 30px;
+
   background: transparent;
 }
 
@@ -528,78 +633,43 @@
   display: none;
 }
 
-.ctaDecorationMobile {
-  position: absolute;
-  inset: 0;
+.ctaAthleteDesktop {
+  display: none;
+}
 
+.ctaVisualMobile {
+  position: absolute;
+  z-index: 3;
+
+  top: -304px;
+  left: 50%;
+
+  display: block;
+
+  width: 482.41px;
+  height: 455.5px;
+
+  transform: translateX(-50%);
+
+  pointer-events: none;
+}
+
+.ctaVisualMobileImage {
   display: block;
 
   width: 100%;
   height: 100%;
 
-  overflow: visible;
-  pointer-events: none;
-}
-
-.ctaDecorationDesktop {
-  position: absolute;
-  z-index: 1;
-
-  left: 0;
-  top: 0;
-
-  display: block;
-
-  width: 1160px;
-  height: 545px;
-
-  overflow: visible;
-
-  pointer-events: none;
-}
-
-.ctaDecorationImageDesktop {
-  display: block;
-
-  width: 1160px;
-  height: 545px;
-  max-width: none;
-
-  object-fit: fill;
-}
-
-.ctaAthleteDesktop {
-  display: none;
-}
-
-.ctaAthleteMobile {
-  position: absolute;
-  z-index: 3;
-
-  top: -289px;
-  left: 81px;
-  right: auto;
-
-  display: block;
-
-  width: 313.22px;
-  height: 348.91px;
-  max-width: none;
-
   object-fit: contain;
-
-  transform: rotate(-1.99deg);
-  transform-origin: center;
-
-  pointer-events: none;
 }
 
 .ctaContent {
   position: relative;
+
   z-index: 5;
 
-  width: 283px;
-  height: 352px;
+  width: calc(100% - 60px);
+  max-width: 283px;
 
   margin: 0 auto;
   padding: 0;
@@ -622,7 +692,7 @@
 }
 
 .benefits {
-  width: 283px;
+  width: 100%;
 
   margin: 0;
   padding-left: 20px;
@@ -632,6 +702,8 @@
   font-size: 18px;
   line-height: 1.1;
   font-weight: 400;
+
+  white-space: normal;
 }
 
 .benefits li {

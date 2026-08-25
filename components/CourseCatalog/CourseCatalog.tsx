@@ -58,10 +58,20 @@ export function CourseCatalog() {
     <section className={styles.section}>
       <div className={styles.hero}>
         <h1 className={styles.title}>
-          Начните заниматься спортом
-          <br />
-          и улучшите качество жизни
-        </h1>
+  <span className={styles.titleDesktop}>
+    Начните заниматься спортом
+    <br />
+    и улучшите качество жизни
+  </span>
+
+  <span className={styles.titleMobile}>
+    Начните заниматься
+    <br />
+    спортом и улучшите
+    <br />
+    качество жизни
+  </span>
+</h1>
 
         <div className={styles.callout}>
           <span>

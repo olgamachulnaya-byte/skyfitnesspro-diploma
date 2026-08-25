@@ -148,13 +148,13 @@ export default function LoginPage() {
           className={styles.logoLink}
         >
           <Image
-            src="/figma/logo.png"
-            alt="SkyFitnessPro"
-            width={220}
-            height={35}
-            className={styles.logo}
-            priority
-          />
+          src="/figma/logo.svg"
+          alt="SkyFitnessPro"
+          width={223}
+          height={36}
+          className={styles.logo}
+          priority
+           />
         </Link>
 
         <form

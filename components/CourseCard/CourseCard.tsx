@@ -6,11 +6,11 @@ import type { Course } from "@/types/course";
 import styles from "./CourseCard.module.css";
 
 const courseImages: Record<string, string> = {
-  Йога: "/figma/courses/yoga.png",
-  Стретчинг: "/figma/courses/stretching.png",
-  Фитнес: "/figma/courses/fitness.png",
-  "Степ-аэробика": "/figma/courses/step-aerobics.png",
-  Бодифлекс: "/figma/courses/bodyflex.png",
+  Йога: "/figma/courses/yoga-card.svg",
+  Стретчинг: "/figma/courses/stretching-card.svg",
+  Фитнес: "/figma/courses/fitness-card.svg",
+  "Степ-аэробика": "/figma/courses/step-aerobics-card.svg",
+  Бодифлекс: "/figma/courses/bodyflex-card.svg",
 };
 
 type CourseCardProps = {
@@ -29,12 +29,13 @@ export function CourseCard({ course }: CourseCardProps) {
       <div className={styles.imageWrapper}>
         {imageSrc && (
           <Image
-            src={imageSrc}
-            alt={course.nameRU}
-            width={360}
-            height={325}
-            className={styles.image}
-          />
+             src={imageSrc}
+             alt={course.nameRU}
+             width={360}
+             height={325}
+             className={styles.image}
+             unoptimized
+             />
         )}
 
         <span className={styles.addIcon} aria-hidden="true">

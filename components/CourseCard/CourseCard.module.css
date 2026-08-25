@@ -99,24 +99,92 @@
   flex: 0 0 18px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1199px) {
   .card {
     width: 343px;
-    height: 492px;
   }
 
   .imageWrapper {
     width: 343px;
-    height: 325px;
-    flex-basis: 325px;
   }
 
   .content {
-    margin-top: 24px;
+    width: 301px;
   }
 
   .title {
+    width: 301px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+    max-width: 343px;
+    height: auto;
+
+    min-height: 470px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 343 / 325;
+
+    flex-basis: auto;
+  }
+
+  .content {
+    width: calc(100% - 42px);
+
+    margin: 24px auto;
+  }
+
+  .title {
+    width: 100%;
+
     font-size: 24px;
     line-height: 1.1;
+  }
+
+  .tagRow {
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 359px) {
+  .card {
+    width: 100%;
+    height: auto;
+
+    min-height: 470px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: auto;
+
+    aspect-ratio: 343 / 325;
+
+    flex-basis: auto;
+  }
+
+  .content {
+    width: calc(100% - 42px);
+
+    margin: 20px auto;
+  }
+
+  .tagRow {
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 14px;
   }
 }
