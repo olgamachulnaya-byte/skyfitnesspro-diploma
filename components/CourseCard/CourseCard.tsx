@@ -29,22 +29,17 @@ export function CourseCard({ course }: CourseCardProps) {
       <div className={styles.imageWrapper}>
         {imageSrc && (
           <Image
-             src={imageSrc}
-             alt={course.nameRU}
-             width={360}
-             height={325}
-             className={styles.image}
-             unoptimized
-             />
+            src={imageSrc}
+            alt={course.nameRU}
+            width={360}
+            height={325}
+            className={styles.image}
+            unoptimized
+          />
         )}
 
         <span className={styles.addIcon} aria-hidden="true">
-          <Image
-            src="/figma/icons/add.svg"
-            alt=""
-            width={32}
-            height={32}
-          />
+          <Image src="/figma/icons/add.svg" alt="" width={32} height={32} />
         </span>
       </div>
 

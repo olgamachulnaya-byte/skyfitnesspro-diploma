@@ -7,10 +7,7 @@ import { Header } from "@/components/Header/Header";
 import { ProfileCourseCard } from "@/components/ProfileCourseCard/ProfileCourseCard";
 import { useAuth } from "@/hooks/useAuth";
 import { getCourses } from "@/lib/api/courses";
-import {
-  getCourseProgress,
-  resetCourseProgress,
-} from "@/lib/api/progress";
+import { getCourseProgress, resetCourseProgress } from "@/lib/api/progress";
 import { removeCourseFromUser } from "@/lib/api/users";
 import type { Course } from "@/types/course";
 import type { CourseProgress } from "@/types/progress";
@@ -38,13 +35,10 @@ function calculateCourseProgress(
   }
 
   const completedWorkouts =
-    progress.workoutsProgress?.filter(
-      (workout) => workout.workoutCompleted,
-    ).length ?? 0;
+    progress.workoutsProgress?.filter((workout) => workout.workoutCompleted)
+      .length ?? 0;
 
-  return Math.round(
-    (completedWorkouts / course.workouts.length) * 100,
-  );
+  return Math.round((completedWorkouts / course.workouts.length) * 100);
 }
 
 export default function ProfilePage() {
@@ -60,22 +54,19 @@ export default function ProfilePage() {
   } = useAuth();
 
   const [courses, setCourses] = useState<Course[]>([]);
-  const [courseProgress, setCourseProgress] = useState<
-    Record<string, number>
-  >({});
+  const [courseProgress, setCourseProgress] = useState<Record<string, number>>(
+    {},
+  );
   const [isCoursesLoading, setIsCoursesLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [removingCourseId, setRemovingCourseId] = useState<
-    string | null
-  >(null);
+  const [removingCourseId, setRemovingCourseId] = useState<string | null>(null);
 
-  const [resettingCourseId, setResettingCourseId] = useState<
-    string | null
-  >(null);
+  const [resettingCourseId, setResettingCourseId] = useState<string | null>(
+    null,
+  );
 
-  const [selectedCourse, setSelectedCourse] =
-  useState<Course | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<Course | null>(null);
 
   useEffect(() => {
     if (!isAuthLoading && !isAuthenticated) {
@@ -111,12 +102,9 @@ export default function ProfilePage() {
     }
 
     return courses
-      .filter((course) =>
-        user.selectedCourses.includes(course._id),
-      )
+      .filter((course) => user.selectedCourses.includes(course._id))
       .sort(
-        (firstCourse, secondCourse) =>
-          firstCourse.order - secondCourse.order,
+        (firstCourse, secondCourse) => firstCourse.order - secondCourse.order,
       );
   }, [courses, user]);
 
@@ -129,10 +117,7 @@ export default function ProfilePage() {
       try {
         const progressEntries = await Promise.all(
           selectedCourses.map(async (course) => {
-            const progress = await getCourseProgress(
-              token,
-              course._id,
-            );
+            const progress = await getCourseProgress(token, course._id);
 
             return [
               course._id,
@@ -175,48 +160,46 @@ export default function ProfilePage() {
       setRemovingCourseId(null);
     }
   }
-   
-   function handleOpenWorkoutModal(course: Course) {
-  setSelectedCourse(course);
-}
 
-function handleCloseWorkoutModal() {
-  setSelectedCourse(null);
-}
-
-function handleSelectWorkout(workoutId: string) {
-  if (!selectedCourse) {
-    return;
-  }
-
-  router.push(
-    `/workout/${selectedCourse._id}/${workoutId}`,
-  );
-}
-
-async function handleResetAndStart(course: Course) {
-  if (!token) {
-    return;
-  }
-
-  try {
-    setErrorMessage("");
-    setResettingCourseId(course._id);
-
-    await resetCourseProgress(token, course._id);
-
-    setCourseProgress((currentProgress) => ({
-      ...currentProgress,
-      [course._id]: 0,
-    }));
-
+  function handleOpenWorkoutModal(course: Course) {
     setSelectedCourse(course);
-  } catch (error) {
-    setErrorMessage(getErrorMessage(error));
-  } finally {
-    setResettingCourseId(null);
   }
-}
+
+  function handleCloseWorkoutModal() {
+    setSelectedCourse(null);
+  }
+
+  function handleSelectWorkout(workoutId: string) {
+    if (!selectedCourse) {
+      return;
+    }
+
+    router.push(`/workout/${selectedCourse._id}/${workoutId}`);
+  }
+
+  async function handleResetAndStart(course: Course) {
+    if (!token) {
+      return;
+    }
+
+    try {
+      setErrorMessage("");
+      setResettingCourseId(course._id);
+
+      await resetCourseProgress(token, course._id);
+
+      setCourseProgress((currentProgress) => ({
+        ...currentProgress,
+        [course._id]: 0,
+      }));
+
+      setSelectedCourse(course);
+    } catch (error) {
+      setErrorMessage(getErrorMessage(error));
+    } finally {
+      setResettingCourseId(null);
+    }
+  }
 
   function handleLogout() {
     logout();
@@ -255,13 +238,9 @@ async function handleResetAndStart(course: Course) {
             </div>
 
             <div className={styles.userInfo}>
-              <p className={styles.userName}>
-                {user.email.split("@")[0]}
-              </p>
+              <p className={styles.userName}>{user.email.split("@")[0]}</p>
 
-              <p className={styles.login}>
-                Логин: {user.email}
-              </p>
+              <p className={styles.login}>Логин: {user.email}</p>
 
               <button
                 type="button"
@@ -277,9 +256,7 @@ async function handleResetAndStart(course: Course) {
         <section className={styles.coursesSection}>
           <h2 className={styles.coursesTitle}>Мои курсы</h2>
 
-          {errorMessage && (
-            <p className={styles.error}>{errorMessage}</p>
-          )}
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
           {selectedCourses.length > 0 ? (
             <div className={styles.coursesGrid}>
@@ -289,41 +266,29 @@ async function handleResetAndStart(course: Course) {
                   course={course}
                   progress={courseProgress[course._id] ?? 0}
                   isPriority={index === 0}
-                  isRemoving={
-                    removingCourseId === course._id
-                  }
-                  isResetting={
-                    resettingCourseId === course._id
-                  }
-                  onStart={() =>
-                     handleOpenWorkoutModal(course)
-                  }
-                  onResetAndStart={() =>
-                     void handleResetAndStart(course)
-                  }
-                  onRemove={() =>
-                    void handleRemoveCourse(course._id)
-                  }
+                  isRemoving={removingCourseId === course._id}
+                  isResetting={resettingCourseId === course._id}
+                  onStart={() => handleOpenWorkoutModal(course)}
+                  onResetAndStart={() => void handleResetAndStart(course)}
+                  onRemove={() => void handleRemoveCourse(course._id)}
                 />
               ))}
             </div>
           ) : (
-            <p className={styles.empty}>
-              У вас пока нет добавленных курсов.
-            </p>
+            <p className={styles.empty}>У вас пока нет добавленных курсов.</p>
           )}
         </section>
       </main>
-      
+
       {selectedCourse && token && (
-      <WorkoutSelectModal
-    token={token}
-    courseId={selectedCourse._id}
-    courseName={selectedCourse.nameRU}
-    onClose={handleCloseWorkoutModal}
-    onSelect={handleSelectWorkout}
-      />
-      )}  
+        <WorkoutSelectModal
+          token={token}
+          courseId={selectedCourse._id}
+          courseName={selectedCourse.nameRU}
+          onClose={handleCloseWorkoutModal}
+          onSelect={handleSelectWorkout}
+        />
+      )}
     </div>
   );
 }

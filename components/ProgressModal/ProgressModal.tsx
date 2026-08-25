@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-import {
-  getWorkoutProgress,
-  updateWorkoutProgress,
-} from "@/lib/api/progress";
+import { getWorkoutProgress, updateWorkoutProgress } from "@/lib/api/progress";
 import type { WorkoutProgress } from "@/types/progress";
 import type { Exercise } from "@/types/workout";
 
@@ -42,8 +39,7 @@ export function ProgressModal({
   onClose,
   onSaved,
 }: ProgressModalProps) {
-  const [values, setValues] =
-    useState<number[]>(initialValues);
+  const [values, setValues] = useState<number[]>(initialValues);
 
   const [isSaving, setIsSaving] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -91,14 +87,9 @@ export function ProgressModal({
       setIsSaving(true);
       setErrorMessage("");
 
-      await updateWorkoutProgress(
-        token,
-        courseId,
-        workoutId,
-        {
-          progressData: values,
-        },
-      );
+      await updateWorkoutProgress(token, courseId, workoutId, {
+        progressData: values,
+      });
 
       const updatedProgress = await getWorkoutProgress(
         token,
@@ -116,11 +107,7 @@ export function ProgressModal({
   }
 
   return (
-    <div
-      className={styles.backdrop}
-      role="presentation"
-      onMouseDown={onClose}
-    >
+    <div className={styles.backdrop} role="presentation" onMouseDown={onClose}>
       <div
         className={styles.modal}
         role="dialog"
@@ -128,28 +115,20 @@ export function ProgressModal({
         aria-labelledby="progress-modal-title"
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <h2
-          id="progress-modal-title"
-          className={styles.title}
-        >
+        <h2 id="progress-modal-title" className={styles.title}>
           Мой прогресс
         </h2>
 
         <div className={styles.inputs}>
           {exercises.map((exercise, index) => (
             <label
-              key={
-                exercise._id ??
-                `${exercise.name}-${index}`
-              }
+              key={exercise._id ?? `${exercise.name}-${index}`}
               className={styles.field}
             >
               <span className={styles.label}>
                 Сколько раз вы сделали{" "}
-                {getExerciseName(
-                  exercise.name,
-                ).toLowerCase()}
-                ? (из {exercise.quantity})
+                {getExerciseName(exercise.name).toLowerCase()}? (из{" "}
+                {exercise.quantity})
               </span>
 
               <input
@@ -157,22 +136,13 @@ export function ProgressModal({
                 min={0}
                 className={styles.input}
                 value={values[index] ?? 0}
-                onChange={(event) =>
-                  handleChange(
-                    index,
-                    event.target.value,
-                  )
-                }
+                onChange={(event) => handleChange(index, event.target.value)}
               />
             </label>
           ))}
         </div>
 
-        {errorMessage && (
-          <p className={styles.error}>
-            {errorMessage}
-          </p>
-        )}
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
         <button
           type="button"

@@ -14,20 +14,14 @@ export function ResetProgressModal({
   onConfirm,
 }: ResetProgressModalProps) {
   return (
-    <div
-      className={styles.backdrop}
-      role="presentation"
-      onMouseDown={onClose}
-    >
+    <div className={styles.backdrop} role="presentation" onMouseDown={onClose}>
       <div
         className={styles.modal}
         role="dialog"
         aria-modal="true"
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <p className={styles.text}>
-          Вы уверены, что хотите сбросить прогресс?
-        </p>
+        <p className={styles.text}>Вы уверены, что хотите сбросить прогресс?</p>
 
         <div className={styles.buttons}>
           <button

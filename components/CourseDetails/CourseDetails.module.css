@@ -94,12 +94,7 @@
 
   border-radius: 28px;
 
-  background:
-    linear-gradient(
-      142deg,
-      #151720 35%,
-      #1e212e 92%
-    );
+  background: linear-gradient(142deg, #151720 35%, #1e212e 92%);
 }
 
 .fittingNumber {
@@ -190,8 +185,7 @@
 
   background: #ffffff;
 
-  box-shadow:
-    0 4px 67px -12px rgb(0 0 0 / 13%);
+  box-shadow: 0 4px 67px -12px rgb(0 0 0 / 13%);
 }
 
 .ctaVisualMobile {
@@ -285,7 +279,6 @@
   transform: none;
 
   pointer-events: none;
-  
 }
 
 .ctaAthleteMobile {
@@ -349,38 +342,38 @@
     width: calc(100% - 32px);
     gap: 40px;
   }
-  
+
   .fittingGrid {
-  width: 100%;
-  flex-direction: column;
-  gap: 16px;
-}
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+  }
 
-.fittingCard {
-  width: 100%;
-  height: auto;
-  min-height: 118px;
-}
+  .fittingCard {
+    width: 100%;
+    height: auto;
+    min-height: 118px;
+  }
 
-.fittingCard:nth-child(1) .fittingText,
-.fittingCard:nth-child(2) .fittingText,
-.fittingCard:nth-child(3) .fittingText {
-  width: auto;
-  flex: 1;
-}
+  .fittingCard:nth-child(1) .fittingText,
+  .fittingCard:nth-child(2) .fittingText,
+  .fittingCard:nth-child(3) .fittingText {
+    width: auto;
+    flex: 1;
+  }
 
-.directionsBox {
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 30px;
-}
+  .directionsBox {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+  }
 
-.direction {
-  width: auto;
-}
+  .direction {
+    width: auto;
+  }
 
-.direction span {
-  width: auto;
-}
+  .direction span {
+    width: auto;
+  }
 
   .heroTitle {
     top: 30px;
@@ -513,26 +506,26 @@
   }
 
   .hero {
-  width: 100%;
-  height: 325px;
-  aspect-ratio: auto;
-  overflow: hidden;
+    width: 100%;
+    height: 325px;
+    aspect-ratio: auto;
+    overflow: hidden;
 
-  border-radius: 30px;
-}
+    border-radius: 30px;
+  }
 
-.heroTitle {
-  display: none;
-}
+  .heroTitle {
+    display: none;
+  }
 
-.heroImageDesktop {
-  display: none;
-}
+  .heroImageDesktop {
+    display: none;
+  }
 
-.heroImageMobile {
-  display: block;
-  object-fit: cover;
-}
+  .heroImageMobile {
+    display: block;
+    object-fit: cover;
+  }
   .sectionTitle {
     width: 100%;
 
@@ -580,14 +573,14 @@
   }
 
   .fittingText {
-  min-width: 0;
-  flex: 1;
+    min-width: 0;
+    flex: 1;
 
-  font-size: 18px;
-  line-height: 1.1;
+    font-size: 18px;
+    line-height: 1.1;
 
-  overflow-wrap: break-word;
-}
+    overflow-wrap: break-word;
+  }
   .directionsBox {
     width: 100%;
 
@@ -614,121 +607,121 @@
   }
 
   .cta {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  max-width: 343px;
-  height: 412px;
+    width: 100%;
+    max-width: 343px;
+    height: 412px;
 
-  margin: 156px auto 0;
+    margin: 156px auto 0;
 
-  overflow: visible;
+    overflow: visible;
 
-  border-radius: 30px;
+    border-radius: 30px;
 
-  background: transparent;
-}
+    background: transparent;
+  }
 
-.ctaDecorationDesktop {
-  display: none;
-}
+  .ctaDecorationDesktop {
+    display: none;
+  }
 
-.ctaAthleteDesktop {
-  display: none;
-}
+  .ctaAthleteDesktop {
+    display: none;
+  }
 
-.ctaVisualMobile {
-  position: absolute;
-  z-index: 3;
+  .ctaVisualMobile {
+    position: absolute;
+    z-index: 3;
 
-  top: -304px;
-  left: 50%;
+    top: -304px;
+    left: 50%;
 
-  display: block;
+    display: block;
 
-  width: 482.41px;
-  height: 455.5px;
+    width: 482.41px;
+    height: 455.5px;
 
-  transform: translateX(-50%);
+    transform: translateX(-50%);
 
-  pointer-events: none;
-}
+    pointer-events: none;
+  }
 
-.ctaVisualMobileImage {
-  display: block;
+  .ctaVisualMobileImage {
+    display: block;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  object-fit: contain;
-}
+    object-fit: contain;
+  }
 
-.ctaContent {
-  position: relative;
+  .ctaContent {
+    position: relative;
 
-  z-index: 5;
+    z-index: 5;
 
-  width: calc(100% - 60px);
-  max-width: 283px;
+    width: calc(100% - 60px);
+    max-width: 283px;
 
-  margin: 0 auto;
-  padding: 0;
+    margin: 0 auto;
+    padding: 0;
 
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
 
-  transform: translateY(-5px);
-}
+    transform: translateY(-5px);
+  }
 
-.ctaTitle {
-  width: 283px;
+  .ctaTitle {
+    width: 283px;
 
-  margin: 0;
+    margin: 0;
 
-  font-size: 32px;
-  line-height: 1.1;
-  font-weight: 500;
-}
+    font-size: 32px;
+    line-height: 1.1;
+    font-weight: 500;
+  }
 
-.benefits {
-  width: 100%;
+  .benefits {
+    width: 100%;
 
-  margin: 0;
-  padding-left: 20px;
+    margin: 0;
+    padding-left: 20px;
 
-  color: rgb(0 0 0 / 60%);
+    color: rgb(0 0 0 / 60%);
 
-  font-size: 18px;
-  line-height: 1.1;
-  font-weight: 400;
+    font-size: 18px;
+    line-height: 1.1;
+    font-weight: 400;
 
-  white-space: normal;
-}
+    white-space: normal;
+  }
 
-.benefits li {
-  margin-bottom: 9px;
-}
+  .benefits li {
+    margin-bottom: 9px;
+  }
 
-.benefits li:last-child {
-  margin-bottom: 0;
-}
+  .benefits li:last-child {
+    margin-bottom: 0;
+  }
 
-.cta::before {
-  content: "";
+  .cta::before {
+    content: "";
 
-  position: absolute;
-  z-index: 4;
+    position: absolute;
+    z-index: 4;
 
-  left: 0;
-  top: -35px;
+    left: 0;
+    top: -35px;
 
-  width: 343px;
-  height: 412px;
+    width: 343px;
+    height: 412px;
 
-  background: #ffffff;
-  border-radius: 30px;
+    background: #ffffff;
+    border-radius: 30px;
 
-  box-shadow: 0 4px 67px -12px rgb(0 0 0 / 13%);
-}
+    box-shadow: 0 4px 67px -12px rgb(0 0 0 / 13%);
+  }
 }

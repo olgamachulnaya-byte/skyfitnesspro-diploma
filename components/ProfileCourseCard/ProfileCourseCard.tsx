@@ -55,16 +55,16 @@ export function ProfileCourseCard({
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
         {imageSrc && (
-      <Image
-       src={imageSrc}
-       alt={course.nameRU}
-       width={360}
-       height={325}
-       className={styles.image}
-       loading={isPriority ? "eager" : "lazy"}
-       unoptimized
-      />
-      )}
+          <Image
+            src={imageSrc}
+            alt={course.nameRU}
+            width={360}
+            height={325}
+            className={styles.image}
+            loading={isPriority ? "eager" : "lazy"}
+            unoptimized
+          />
+        )}
 
         <button
           type="button"
@@ -90,7 +90,6 @@ export function ProfileCourseCard({
                 width={18}
                 height={18}
               />
-
               {course.durationInDays} дней
             </span>
 
@@ -101,7 +100,6 @@ export function ProfileCourseCard({
                 width={18}
                 height={18}
               />
-
               {course.dailyDurationInMinutes.from}–
               {course.dailyDurationInMinutes.to} мин/день
             </span>
@@ -120,9 +118,7 @@ export function ProfileCourseCard({
         </div>
 
         <div className={styles.progressBlock}>
-          <span className={styles.progressText}>
-            Прогресс: {progress}%
-          </span>
+          <span className={styles.progressText}>Прогресс: {progress}%</span>
 
           <div
             className={styles.progressTrack}

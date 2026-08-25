@@ -15,15 +15,12 @@ function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-function validateRegistrationPassword(
-  password: string,
-): string | null {
+function validateRegistrationPassword(password: string): string | null {
   if (password.length < 6) {
     return "Пароль должен содержать не менее 6 символов";
   }
 
-  const specialCharacters =
-    password.match(/[^A-Za-z0-9]/g) ?? [];
+  const specialCharacters = password.match(/[^A-Za-z0-9]/g) ?? [];
 
   if (specialCharacters.length < 2) {
     return "Пароль должен содержать не менее 2 спецсимволов";
@@ -48,24 +45,17 @@ export default function LoginPage() {
   const router = useRouter();
   const { login, register } = useAuth();
 
-  const [mode, setMode] =
-    useState<AuthMode>("login");
+  const [mode, setMode] = useState<AuthMode>("login");
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] =
-    useState("");
-  const [repeatPassword, setRepeatPassword] =
-    useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
 
-  const [errorMessage, setErrorMessage] =
-    useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const [isSubmitting, setIsSubmitting] =
-    useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  async function handleSubmit(
-    event: FormEvent<HTMLFormElement>,
-  ) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setErrorMessage("");
@@ -73,9 +63,7 @@ export default function LoginPage() {
     const normalizedEmail = email.trim();
 
     if (!validateEmail(normalizedEmail)) {
-      setErrorMessage(
-        "Введите корректный Email",
-      );
+      setErrorMessage("Введите корректный Email");
       return;
     }
 
@@ -84,19 +72,13 @@ export default function LoginPage() {
       return;
     }
 
-    if (
-      mode === "register" &&
-      password !== repeatPassword
-    ) {
+    if (mode === "register" && password !== repeatPassword) {
       setErrorMessage("Пароли не совпадают");
       return;
     }
 
     if (mode === "register") {
-      const passwordError =
-        validateRegistrationPassword(
-          password,
-        );
+      const passwordError = validateRegistrationPassword(password);
 
       if (passwordError) {
         setErrorMessage(passwordError);
@@ -120,20 +102,14 @@ export default function LoginPage() {
 
       router.push("/profile");
     } catch (error) {
-      setErrorMessage(
-        getErrorMessage(error),
-      );
+      setErrorMessage(getErrorMessage(error));
     } finally {
       setIsSubmitting(false);
     }
   }
 
   function changeMode() {
-    setMode((currentMode) =>
-      currentMode === "login"
-        ? "register"
-        : "login",
-    );
+    setMode((currentMode) => (currentMode === "login" ? "register" : "login"));
 
     setPassword("");
     setRepeatPassword("");
@@ -143,24 +119,18 @@ export default function LoginPage() {
   return (
     <main className={styles.page}>
       <section className={styles.card}>
-        <Link
-          href="/"
-          className={styles.logoLink}
-        >
+        <Link href="/" className={styles.logoLink}>
           <Image
-          src="/figma/logo.svg"
-          alt="SkyFitnessPro"
-          width={223}
-          height={36}
-          className={styles.logo}
-          priority
-           />
+            src="/figma/logo.svg"
+            alt="SkyFitnessPro"
+            width={223}
+            height={36}
+            className={styles.logo}
+            priority
+          />
         </Link>
 
-        <form
-          className={styles.form}
-          onSubmit={handleSubmit}
-        >
+        <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.inputs}>
             <input
               id="email"
@@ -168,9 +138,7 @@ export default function LoginPage() {
               type="email"
               className={styles.input}
               value={email}
-              onChange={(event) =>
-                setEmail(event.target.value)
-              }
+              onChange={(event) => setEmail(event.target.value)}
               autoComplete="email"
               placeholder="Эл. почта"
             />
@@ -181,15 +149,9 @@ export default function LoginPage() {
               type="password"
               className={styles.input}
               value={password}
-              onChange={(event) =>
-                setPassword(
-                  event.target.value,
-                )
-              }
+              onChange={(event) => setPassword(event.target.value)}
               autoComplete={
-                mode === "login"
-                  ? "current-password"
-                  : "new-password"
+                mode === "login" ? "current-password" : "new-password"
               }
               placeholder="Пароль"
             />
@@ -201,22 +163,14 @@ export default function LoginPage() {
                 type="password"
                 className={styles.input}
                 value={repeatPassword}
-                onChange={(event) =>
-                  setRepeatPassword(
-                    event.target.value,
-                  )
-                }
+                onChange={(event) => setRepeatPassword(event.target.value)}
                 autoComplete="new-password"
                 placeholder="Повторите пароль"
               />
             )}
           </div>
 
-          {errorMessage && (
-            <p className={styles.error}>
-              {errorMessage}
-            </p>
-          )}
+          {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
           <div className={styles.buttons}>
             <button
@@ -237,9 +191,7 @@ export default function LoginPage() {
               onClick={changeMode}
               disabled={isSubmitting}
             >
-              {mode === "login"
-                ? "Зарегистрироваться"
-                : "Войти"}
+              {mode === "login" ? "Зарегистрироваться" : "Войти"}
             </button>
           </div>
         </form>

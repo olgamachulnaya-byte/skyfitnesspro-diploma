@@ -23,13 +23,7 @@ function getErrorMessage(error: unknown): string {
 export function CourseAction({ courseId }: CourseActionProps) {
   const router = useRouter();
 
-  const {
-    token,
-    user,
-    isLoading,
-    isAuthenticated,
-    refreshUser,
-  } = useAuth();
+  const { token, user, isLoading, isAuthenticated, refreshUser } = useAuth();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -86,11 +80,7 @@ export function CourseAction({ courseId }: CourseActionProps) {
         {buttonText}
       </button>
 
-      {errorMessage && (
-        <p className={styles.error}>
-          {errorMessage}
-        </p>
-      )}
+      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
     </div>
   );
 }

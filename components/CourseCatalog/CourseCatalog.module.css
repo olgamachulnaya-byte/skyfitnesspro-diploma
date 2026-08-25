@@ -117,21 +117,21 @@
   }
 
   .title {
-  width: 100%;
-  max-width: none;
+    width: 100%;
+    max-width: none;
 
-  font-size: clamp(28px, 8.53vw, 32px);
-  line-height: 1.1;
-  font-weight: 500;
-}
+    font-size: clamp(28px, 8.53vw, 32px);
+    line-height: 1.1;
+    font-weight: 500;
+  }
 
-.titleDesktop {
-  display: none;
-}
+  .titleDesktop {
+    display: none;
+  }
 
-.titleMobile {
-  display: inline;
-}
+  .titleMobile {
+    display: inline;
+  }
 
   .grid {
     width: 100%;

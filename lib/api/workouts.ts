@@ -5,11 +5,8 @@ export function getWorkoutById(
   token: string,
   workoutId: string,
 ): Promise<Workout> {
-  return apiRequest<Workout>(
-    `/workouts/${encodeURIComponent(workoutId)}`,
-    {
-      method: "GET",
-      token,
-    },
-  );
+  return apiRequest<Workout>(`/workouts/${encodeURIComponent(workoutId)}`, {
+    method: "GET",
+    token,
+  });
 }

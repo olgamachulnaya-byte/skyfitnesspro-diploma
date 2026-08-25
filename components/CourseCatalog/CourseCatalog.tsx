@@ -58,20 +58,19 @@ export function CourseCatalog() {
     <section className={styles.section}>
       <div className={styles.hero}>
         <h1 className={styles.title}>
-  <span className={styles.titleDesktop}>
-    Начните заниматься спортом
-    <br />
-    и улучшите качество жизни
-  </span>
+          <span className={styles.titleDesktop}>
+            Начните заниматься спортом
+            <br />и улучшите качество жизни
+          </span>
 
-  <span className={styles.titleMobile}>
-    Начните заниматься
-    <br />
-    спортом и улучшите
-    <br />
-    качество жизни
-  </span>
-</h1>
+          <span className={styles.titleMobile}>
+            Начните заниматься
+            <br />
+            спортом и улучшите
+            <br />
+            качество жизни
+          </span>
+        </h1>
 
         <div className={styles.callout}>
           <span>
@@ -81,12 +80,12 @@ export function CourseCatalog() {
           </span>
 
           <Image
-  src="/figma/icons/bubble-tail.svg"
-  alt=""
-  width={31}
-  height={36}
-  className={styles.calloutTail}
-           />
+            src="/figma/icons/bubble-tail.svg"
+            alt=""
+            width={31}
+            height={36}
+            className={styles.calloutTail}
+          />
         </div>
       </div>
 

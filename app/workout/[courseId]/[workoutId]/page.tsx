@@ -9,10 +9,7 @@ import { ProgressSuccessModal } from "@/components/ProgressSuccessModal/Progress
 import { ResetProgressModal } from "@/components/ResetProgressModal/ResetProgressModal";
 import { useAuth } from "@/hooks/useAuth";
 import { getCourseById } from "@/lib/api/courses";
-import {
-  getWorkoutProgress,
-  resetWorkoutProgress,
-} from "@/lib/api/progress";
+import { getWorkoutProgress, resetWorkoutProgress } from "@/lib/api/progress";
 import { getWorkoutById } from "@/lib/api/workouts";
 import type { Course } from "@/types/course";
 import type { WorkoutProgress } from "@/types/progress";
@@ -32,18 +29,12 @@ function getExerciseName(name: string): string {
   return name.split("(")[0]?.trim() ?? name;
 }
 
-function calculateProgress(
-  currentValue: number,
-  targetValue: number,
-): number {
+function calculateProgress(currentValue: number, targetValue: number): number {
   if (targetValue <= 0) {
     return 0;
   }
 
-  return Math.min(
-    100,
-    Math.round((currentValue / targetValue) * 100),
-  );
+  return Math.min(100, Math.round((currentValue / targetValue) * 100));
 }
 
 export default function WorkoutPage() {
@@ -54,32 +45,23 @@ export default function WorkoutPage() {
     workoutId: string;
   }>();
 
-  const {
-    token,
-    isLoading: isAuthLoading,
-    isAuthenticated,
-  } = useAuth();
+  const { token, isLoading: isAuthLoading, isAuthenticated } = useAuth();
 
   const [course, setCourse] = useState<Course | null>(null);
   const [workout, setWorkout] = useState<Workout | null>(null);
 
-  const [progress, setProgress] =
-    useState<WorkoutProgress | null>(null);
+  const [progress, setProgress] = useState<WorkoutProgress | null>(null);
 
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [isProgressModalOpen, setIsProgressModalOpen] =
-    useState(false);
+  const [isProgressModalOpen, setIsProgressModalOpen] = useState(false);
 
-  const [isSuccessModalOpen, setIsSuccessModalOpen] =
-    useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
-  const [isResetModalOpen, setIsResetModalOpen] =
-    useState(false);
+  const [isResetModalOpen, setIsResetModalOpen] = useState(false);
 
-  const [isResetting, setIsResetting] =
-    useState(false);
+  const [isResetting, setIsResetting] = useState(false);
 
   const [actionError, setActionError] = useState("");
 
@@ -91,29 +73,17 @@ export default function WorkoutPage() {
 
   useEffect(() => {
     async function loadWorkout() {
-      if (
-        !token ||
-        !params.courseId ||
-        !params.workoutId
-      ) {
+      if (!token || !params.courseId || !params.workoutId) {
         return;
       }
 
       try {
         setErrorMessage("");
 
-        const [
-          courseData,
-          workoutData,
-          progressData,
-        ] = await Promise.all([
+        const [courseData, workoutData, progressData] = await Promise.all([
           getCourseById(params.courseId),
           getWorkoutById(token, params.workoutId),
-          getWorkoutProgress(
-            token,
-            params.courseId,
-            params.workoutId,
-          ),
+          getWorkoutProgress(token, params.courseId, params.workoutId),
         ]);
 
         setCourse(courseData);
@@ -129,12 +99,7 @@ export default function WorkoutPage() {
     if (isAuthenticated) {
       void loadWorkout();
     }
-  }, [
-    isAuthenticated,
-    params.courseId,
-    params.workoutId,
-    token,
-  ]);
+  }, [isAuthenticated, params.courseId, params.workoutId, token]);
 
   async function handleResetWorkout() {
     if (!token) {
@@ -145,18 +110,13 @@ export default function WorkoutPage() {
       setIsResetting(true);
       setActionError("");
 
-      await resetWorkoutProgress(
+      await resetWorkoutProgress(token, params.courseId, params.workoutId);
+
+      const updatedProgress = await getWorkoutProgress(
         token,
         params.courseId,
         params.workoutId,
       );
-
-      const updatedProgress =
-        await getWorkoutProgress(
-          token,
-          params.courseId,
-          params.workoutId,
-        );
 
       setProgress(updatedProgress);
       setIsResetModalOpen(false);
@@ -185,9 +145,7 @@ export default function WorkoutPage() {
         <Header />
 
         <main className={styles.main}>
-          <p className={styles.error}>
-            {errorMessage}
-          </p>
+          <p className={styles.error}>{errorMessage}</p>
         </main>
       </div>
     );
@@ -197,12 +155,9 @@ export default function WorkoutPage() {
     return null;
   }
 
-  const progressData =
-    progress?.progressData ??
-    workout.exercises.map(() => 0);
+  const progressData = progress?.progressData ?? workout.exercises.map(() => 0);
 
-  const workoutCompleted =
-    progress?.workoutCompleted ?? false;
+  const workoutCompleted = progress?.workoutCompleted ?? false;
 
   function handleProgressButton() {
     if (workoutCompleted) {
@@ -213,9 +168,7 @@ export default function WorkoutPage() {
     setIsProgressModalOpen(true);
   }
 
-  function handleProgressSaved(
-    updatedProgress: WorkoutProgress,
-  ) {
+  function handleProgressSaved(updatedProgress: WorkoutProgress) {
     setProgress(updatedProgress);
     setIsSuccessModalOpen(true);
   }
@@ -225,9 +178,7 @@ export default function WorkoutPage() {
       <Header />
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          {course.nameRU}
-        </h1>
+        <h1 className={styles.title}>{course.nameRU}</h1>
 
         <div className={styles.videoWrapper}>
           <iframe
@@ -240,62 +191,49 @@ export default function WorkoutPage() {
         </div>
 
         <section className={styles.exerciseSection}>
-          <h2 className={styles.exerciseTitle}>
-            Упражнения тренировки
-          </h2>
+          <h2 className={styles.exerciseTitle}>Упражнения тренировки</h2>
 
           <div className={styles.exerciseGrid}>
-            {workout.exercises.map(
-              (exercise, index) => {
-                const currentValue =
-                  progressData[index] ?? 0;
+            {workout.exercises.map((exercise, index) => {
+              const currentValue = progressData[index] ?? 0;
 
-                const percent = calculateProgress(
-                  currentValue,
-                  exercise.quantity,
-                );
+              const percent = calculateProgress(
+                currentValue,
+                exercise.quantity,
+              );
 
-                return (
+              return (
+                <div
+                  key={exercise._id ?? `${exercise.name}-${index}`}
+                  className={styles.exercise}
+                >
+                  <p className={styles.exerciseName}>
+                    {getExerciseName(exercise.name)} {percent}%
+                  </p>
+
                   <div
-                    key={
-                      exercise._id ??
-                      `${exercise.name}-${index}`
-                    }
-                    className={styles.exercise}
+                    className={styles.progressTrack}
+                    role="progressbar"
+                    aria-label={`Прогресс упражнения ${getExerciseName(
+                      exercise.name,
+                    )}`}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={percent}
                   >
-                    <p className={styles.exerciseName}>
-                      {getExerciseName(exercise.name)}{" "}
-                      {percent}%
-                    </p>
-
                     <div
-                      className={styles.progressTrack}
-                      role="progressbar"
-                      aria-label={`Прогресс упражнения ${getExerciseName(
-                        exercise.name,
-                      )}`}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-valuenow={percent}
-                    >
-                      <div
-                        className={styles.progressValue}
-                        style={{
-                          width: `${percent}%`,
-                        }}
-                      />
-                    </div>
+                      className={styles.progressValue}
+                      style={{
+                        width: `${percent}%`,
+                      }}
+                    />
                   </div>
-                );
-              },
-            )}
+                </div>
+              );
+            })}
           </div>
 
-          {actionError && (
-            <p className={styles.error}>
-              {actionError}
-            </p>
-          )}
+          {actionError && <p className={styles.error}>{actionError}</p>}
 
           <button
             type="button"
@@ -318,30 +256,20 @@ export default function WorkoutPage() {
           workoutId={params.workoutId}
           exercises={workout.exercises}
           initialValues={progressData}
-          onClose={() =>
-            setIsProgressModalOpen(false)
-          }
+          onClose={() => setIsProgressModalOpen(false)}
           onSaved={handleProgressSaved}
         />
       )}
 
       {isSuccessModalOpen && (
-        <ProgressSuccessModal
-          onClose={() =>
-            setIsSuccessModalOpen(false)
-          }
-        />
+        <ProgressSuccessModal onClose={() => setIsSuccessModalOpen(false)} />
       )}
 
       {isResetModalOpen && (
         <ResetProgressModal
           isResetting={isResetting}
-          onClose={() =>
-            setIsResetModalOpen(false)
-          }
-          onConfirm={() =>
-            void handleResetWorkout()
-          }
+          onClose={() => setIsResetModalOpen(false)}
+          onConfirm={() => void handleResetWorkout()}
         />
       )}
     </div>

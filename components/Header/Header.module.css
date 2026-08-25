@@ -171,8 +171,7 @@
 
   background: #ffffff;
 
-  box-shadow: 0 4px 67px -12px
-    rgb(0 0 0 / 20%);
+  box-shadow: 0 4px 67px -12px rgb(0 0 0 / 20%);
 }
 
 .menuEmail {
@@ -237,13 +236,13 @@
   }
 
   .brand {
-  min-width: 0;
-}
+    min-width: 0;
+  }
 
-.logo {
-  width: 160px;
-  height: auto;
-}
+  .logo {
+    width: 160px;
+    height: auto;
+  }
 
   .subtitle {
     display: none;

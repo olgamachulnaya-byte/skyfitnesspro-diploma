@@ -51,13 +51,13 @@ export function WorkoutSelectModal({
   onSelect,
 }: WorkoutSelectModalProps) {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
-  const [completedWorkoutIds, setCompletedWorkoutIds] = useState<
-    Set<string>
-  >(new Set());
+  const [completedWorkoutIds, setCompletedWorkoutIds] = useState<Set<string>>(
+    new Set(),
+  );
 
-  const [selectedWorkoutId, setSelectedWorkoutId] = useState<
-    string | null
-  >(null);
+  const [selectedWorkoutId, setSelectedWorkoutId] = useState<string | null>(
+    null,
+  );
 
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
@@ -82,7 +82,6 @@ export function WorkoutSelectModal({
 
         setCompletedWorkoutIds(completedIds);
         setSelectedWorkoutId(null);
-        
       } catch (error) {
         setErrorMessage(getErrorMessage(error));
       } finally {
@@ -126,11 +125,7 @@ export function WorkoutSelectModal({
   }
 
   return (
-    <div
-      className={styles.backdrop}
-      role="presentation"
-      onMouseDown={onClose}
-    >
+    <div className={styles.backdrop} role="presentation" onMouseDown={onClose}>
       <div
         className={styles.modal}
         role="dialog"
@@ -138,29 +133,20 @@ export function WorkoutSelectModal({
         aria-labelledby="workout-modal-title"
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <h2
-          id="workout-modal-title"
-          className={styles.title}
-        >
+        <h2 id="workout-modal-title" className={styles.title}>
           Выберите тренировку
         </h2>
 
-        {isLoading && (
-          <p className={styles.message}>Загрузка...</p>
-        )}
+        {isLoading && <p className={styles.message}>Загрузка...</p>}
 
-        {errorMessage && (
-          <p className={styles.error}>{errorMessage}</p>
-        )}
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
 
         {!isLoading && !errorMessage && (
           <div className={styles.list}>
             {workouts.map((workout, index) => {
-              const isCompleted =
-                completedWorkoutIds.has(workout._id);
+              const isCompleted = completedWorkoutIds.has(workout._id);
 
-              const isSelected =
-                selectedWorkoutId === workout._id;
+              const isSelected = selectedWorkoutId === workout._id;
 
               const displayData = getWorkoutDisplayData(
                 workout.name,
@@ -173,18 +159,12 @@ export function WorkoutSelectModal({
                   key={workout._id}
                   type="button"
                   className={styles.workout}
-                  onClick={() =>
-                    setSelectedWorkoutId(workout._id)
-                  }
+                  onClick={() => setSelectedWorkoutId(workout._id)}
                 >
                   <span
                     className={`${styles.radio} ${
                       isSelected ? styles.radioSelected : ""
-                    } ${
-                      isCompleted
-                        ? styles.radioCompleted
-                        : ""
-                    }`}
+                    } ${isCompleted ? styles.radioCompleted : ""}`}
                     aria-hidden="true"
                   >
                     {isCompleted ? "✓" : ""}
@@ -195,9 +175,7 @@ export function WorkoutSelectModal({
                       {displayData.title}
                     </span>
 
-                    <span
-                      className={styles.workoutDescription}
-                    >
+                    <span className={styles.workoutDescription}>
                       {displayData.description}
                     </span>
                   </span>
@@ -210,11 +188,7 @@ export function WorkoutSelectModal({
         <button
           type="button"
           className={styles.startButton}
-          disabled={
-            !selectedWorkoutId ||
-            isLoading ||
-            Boolean(errorMessage)
-          }
+          disabled={!selectedWorkoutId || isLoading || Boolean(errorMessage)}
           onClick={handleStart}
         >
           Начать

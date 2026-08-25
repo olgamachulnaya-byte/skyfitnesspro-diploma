@@ -18,10 +18,7 @@ async function loadCourse(courseId: string): Promise<Course> {
   try {
     return await getCourseById(courseId);
   } catch (error) {
-    if (
-      error instanceof ApiRequestError &&
-      error.status === 404
-    ) {
+    if (error instanceof ApiRequestError && error.status === 404) {
       notFound();
     }
 
@@ -29,9 +26,7 @@ async function loadCourse(courseId: string): Promise<Course> {
   }
 }
 
-export default async function CoursePage({
-  params,
-}: CoursePageProps) {
+export default async function CoursePage({ params }: CoursePageProps) {
   const { courseId } = await params;
 
   const course = await loadCourse(courseId);
