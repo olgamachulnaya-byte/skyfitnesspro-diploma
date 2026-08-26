@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
+import { AuthModal } from "@/components/AuthModal/AuthModal";
 import { useAuth } from "@/hooks/useAuth";
 import { addCourseToUser } from "@/lib/api/users";
 
@@ -21,12 +21,11 @@ function getErrorMessage(error: unknown): string {
 }
 
 export function CourseAction({ courseId }: CourseActionProps) {
-  const router = useRouter();
-
   const { token, user, isLoading, isAuthenticated, refreshUser } = useAuth();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const hasCourse = user?.selectedCourses.includes(courseId) ?? false;
 
@@ -36,7 +35,7 @@ export function CourseAction({ courseId }: CourseActionProps) {
     }
 
     if (!isAuthenticated || !token || !user) {
-      router.push("/login");
+      setIsAuthModalOpen(true);
       return;
     }
 
@@ -70,17 +69,24 @@ export function CourseAction({ courseId }: CourseActionProps) {
   }
 
   return (
-    <div className={styles.wrapper}>
-      <button
-        type="button"
-        className={styles.button}
-        onClick={handleClick}
-        disabled={isLoading || isSubmitting || hasCourse}
-      >
-        {buttonText}
-      </button>
+    <>
+      <div className={styles.wrapper}>
+        <button
+          type="button"
+          className={styles.button}
+          onClick={handleClick}
+          disabled={isLoading || isSubmitting || hasCourse}
+        >
+          {buttonText}
+        </button>
 
-      {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-    </div>
+        {errorMessage && <p className={styles.error}>{errorMessage}</p>}
+      </div>
+
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+      />
+    </>
   );
 }
