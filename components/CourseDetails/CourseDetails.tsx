@@ -156,6 +156,7 @@ export function CourseDetails({ course }: CourseDetailsProps) {
           width={487}
           height={538}
           className={styles.ctaAthleteDesktop}
+          loading="eager"
           unoptimized
         />
 

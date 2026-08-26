@@ -32,8 +32,8 @@
 }
 
 .logo {
-  width: 220px;
-  height: auto;
+  width: auto;
+  height: 36px;
 
   display: block;
 }
@@ -176,7 +176,8 @@
   }
 
   .logo {
-    width: 220px;
+    width: auto;
+    height: 36px;
   }
 
   .form {
