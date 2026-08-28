@@ -64,12 +64,6 @@ cd skyfitnesspro-diploma
 npm install
 ```
 
-Создайте файл `.env.local` в корне проекта и добавьте:
-
-```env
-NEXT_PUBLIC_API_URL=https://wedev-api.sky.pro/api/fitness
-```
-
 Запустите проект в режиме разработки:
 
 ```bash
